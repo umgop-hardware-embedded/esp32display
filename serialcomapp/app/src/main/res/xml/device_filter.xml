@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- CP210x USB to UART Bridge (common in ESP32) -->
+    <usb-device vendor-id="4292" />
+    
+    <!-- FTDI chips -->
+    <usb-device vendor-id="1027" />
+    
+    <!-- CH340 chips -->
+    <usb-device vendor-id="6790" />
+    <usb-device vendor-id="4292" />
+    
+    <!-- Prolific chips -->
+    <usb-device vendor-id="1659" />
+    
+    <!-- Fallback: Accept all USB devices -->
+    <usb-device />
+</resources>
