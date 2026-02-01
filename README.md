@@ -8,6 +8,7 @@ This project contains two scripts for serial communication between an Android ap
 - Updates the display based on received serial signals
 - Uses the ArduinoGFX library for rendering
 - Graphics and animations can be customized
+- Extremely useful site: https://www.waveshare.com/wiki/ESP32-S3-Touch-AMOLED-1.75?srsltid=AfmBOoo0XXboYLa7aAQUxWXshpvcOcL-91DwrRC2b-E4TUDviT9IMh3N#Resources
 
 ### Android Serial Control App (serialcomapp)
 
