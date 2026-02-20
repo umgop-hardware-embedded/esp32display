@@ -18,7 +18,7 @@
 #define LCD_D2   45
 #define LCD_D3   46
 #define LCD_BL   48
-#define LCD_RST  38
+#define LCD_RST  -1   // skip hardware reset; software init sequence handles it
 
 #define BOOT_PIN  0
 
@@ -400,7 +400,9 @@ void setup() {
   digitalWrite(LCD_BL, HIGH);
 
   if (!gfx->begin()) {
-    Serial.println("gfx->begin() failed!");
+    Serial.println("gfx->begin() failed! Check wiring.");
+    delay(5000);
+    ESP.restart();
   }
 
   gfx->setRotation(1);
