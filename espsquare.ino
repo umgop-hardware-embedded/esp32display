@@ -66,17 +66,82 @@ Arduino_AXS15231B *gfx = new Arduino_AXS15231B(
   sizeof(axs15231b_320480_type2_init_operations)
 );
 
+// ---------- Direct pixel-write helpers (opcode 0x02 path) ----------
+//
+// The Arduino_GFX QSPI bus driver uses SPI opcode 0x32 (QIO mode) for all
+// pixel data writes (fillScreen, drawBitmap, etc.).  On some AXS15231B panel
+// revisions this opcode is ignored, leaving the random startup GRAM visible.
+//
+// The batchOperation init path uses opcode 0x02 via writeC8Bytes — and we
+// KNOW that path reaches the display (the panel powers on correctly).  These
+// helpers bypass the gfx drawing layer and write pixels the same way.
+//
+// pxbuf must live in internal SRAM (not flash) so SPI DMA can read it.
+static uint8_t DRAM_ATTR pxbuf[8192]; // 4096 pixels × 2 bytes (RGB565) per chunk
+
+// Set column / row address window on the display.
+static void setWindowRaw(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) {
+  uint8_t ca[4] = { (uint8_t)(x1 >> 8), (uint8_t)x1,
+                    (uint8_t)(x2 >> 8), (uint8_t)x2 };
+  uint8_t ra[4] = { (uint8_t)(y1 >> 8), (uint8_t)y1,
+                    (uint8_t)(y2 >> 8), (uint8_t)y2 };
+  bus->beginWrite();
+  bus->writeC8Bytes(0x2A, ca, 4);   // CASET
+  bus->writeC8Bytes(0x2B, ra, 4);   // RASET
+  bus->endWrite();
+}
+
+// Write raw big-endian RGB565 bytes to the current window.
+// Copies into pxbuf first so SPI DMA always has SRAM-backed data.
+static void writePixelsRaw(const uint8_t *data, uint32_t byteLen) {
+  const uint8_t *p = data;
+  bool first = true;
+  while (byteLen > 0) {
+    uint32_t chunk = (byteLen > sizeof(pxbuf)) ? sizeof(pxbuf) : byteLen;
+    memcpy(pxbuf, p, chunk);
+    bus->beginWrite();
+    // 0x2C = RAMWR (first chunk); 0x3C = Memory Write Continue (subsequent)
+    bus->writeC8Bytes(first ? 0x2C : 0x3C, pxbuf, chunk);
+    bus->endWrite();
+    p       += chunk;
+    byteLen -= chunk;
+    first    = false;
+  }
+}
+
+// Fill the entire display with one colour (replaces gfx->fillScreen).
+static void fillDisplayRaw(uint16_t color) {
+  const uint8_t hi = color >> 8, lo = color & 0xFF;
+  for (uint32_t i = 0; i < sizeof(pxbuf); i += 2) {
+    pxbuf[i]     = hi;
+    pxbuf[i + 1] = lo;
+  }
+  const uint16_t W = gfx->width(), H = gfx->height();
+  setWindowRaw(0, 0, W - 1, H - 1);
+  uint32_t remaining = (uint32_t)W * H;
+  bool first = true;
+  while (remaining > 0) {
+    uint32_t chunk = (remaining > sizeof(pxbuf) / 2) ? sizeof(pxbuf) / 2 : remaining;
+    bus->beginWrite();
+    bus->writeC8Bytes(first ? 0x2C : 0x3C, pxbuf, chunk * 2);
+    bus->endWrite();
+    remaining -= chunk;
+    first      = false;
+  }
+}
+
 // ---------- JPEG decoder ----------
 JPEGDEC jpeg;
 
-// Callback called by JPEGDEC for each decoded MCU block.
-// RGB565_BIG_ENDIAN pixel type + draw16bitBeRGBBitmap = correct colours.
+// JPEGDEC calls this for each decoded MCU block.
+// Uses the opcode-0x02 write path so the pixels actually reach the display.
 int jpegDrawCallback(JPEGDRAW *pDraw) {
-  gfx->draw16bitBeRGBBitmap(
-    pDraw->x, pDraw->y,
-    pDraw->pPixels,
-    pDraw->iWidth, pDraw->iHeight);
-  return 1; // continue decoding
+  setWindowRaw(pDraw->x, pDraw->y,
+               pDraw->x + pDraw->iWidth  - 1,
+               pDraw->y + pDraw->iHeight - 1);
+  writePixelsRaw((const uint8_t *)pDraw->pPixels,
+                 (uint32_t)pDraw->iWidth * pDraw->iHeight * 2);
+  return 1;
 }
 
 // ---------- State ----------
@@ -85,18 +150,14 @@ bool lastBoot     = true;
 uint32_t lastDebounce = 0;
 
 // ---------- Helpers ----------
-// Show up to two lines of white text on a black background.
+// Print status to Serial. Also clears the display to black so the user
+// can see when a new operation starts (even if text rendering still fails).
 void showStatus(const char *line1, const char *line2 = nullptr) {
-  gfx->fillScreen(0x0000);
-  gfx->setTextSize(2);
-  gfx->setTextColor(0xFFFF);
-  gfx->setCursor(10, 10);
-  gfx->println(line1);
-  if (line2) {
-    gfx->setTextSize(1);
-    gfx->setCursor(10, 44);
-    gfx->println(line2);
-  }
+  fillDisplayRaw(0x0000);   // black — uses the working opcode-0x02 path
+  Serial.println(line1);
+  if (line2) Serial.println(line2);
+  // Note: gfx text calls (gfx->println) use the opcode-0x32 path that may
+  // not work on this panel.  Status is available in Serial Monitor instead.
 }
 
 // ---------- Core: fetch a JPEG from a URL and display it ----------
@@ -169,15 +230,14 @@ void showImage(int idx) {
 
   // --- Decode and display ---
   if (jpeg.openRAM(buf, (int)total, jpegDrawCallback)) {
-    jpeg.setPixelType(RGB565_BIG_ENDIAN);  // matches draw16bitBeRGBBitmap
-    gfx->startWrite();
+    // RGB565_BIG_ENDIAN: JPEGDEC outputs high-byte first, matching
+    // our writePixelsRaw which sends bytes to the display as-is.
+    jpeg.setPixelType(RGB565_BIG_ENDIAN);
     jpeg.decode(0, 0, JPEG_AUTO_ROTATE);   // honour EXIF orientation
-    gfx->endWrite();
     jpeg.close();
     Serial.println("Image displayed OK");
   } else {
-    showStatus("JPEG decode failed",
-               "Is the download a valid JPEG?");
+    showStatus("JPEG decode failed");
     Serial.println("ERROR: jpeg.openRAM() failed");
   }
 
@@ -231,12 +291,24 @@ void setup() {
   }
   Serial.printf("Display OK  native: %dx%d\n", gfx->width(), gfx->height());
 
-  // Quick colour flash — if you see red then green the display hardware works
-  gfx->fillScreen(0xF800); delay(500);   // RED
-  gfx->fillScreen(0x07E0); delay(500);   // GREEN
+  // Force 16-bit RGB565 colour mode.  The type2 init sequence omits COLMOD
+  // so the chip may default to 18- or 24-bit mode, causing colour corruption.
+  bus->beginWrite();
+  bus->writeC8D8(0x3A, 0x55);  // COLMOD: 0x55 = 16 bpp RGB565
+  bus->endWrite();
+  delay(10);
+  Serial.println("COLMOD set to 0x55 (16-bit RGB565)");
 
-  gfx->setRotation(1);  // landscape: 480×320
+  // Apply landscape rotation BEFORE any drawing so gfx->width()/height()
+  // report the correct 480x320 dimensions for fillDisplayRaw.
+  gfx->setRotation(1);
   Serial.printf("After setRotation(1): %dx%d\n", gfx->width(), gfx->height());
+
+  // Colour flash — uses the opcode-0x02 pixel path.
+  // If you see RED then GREEN the display hardware and pixel writes are working.
+  fillDisplayRaw(0xF800); delay(500);   // RED
+  fillDisplayRaw(0x07E0); delay(500);   // GREEN
+  Serial.println("Colour flash done");
 
   // WiFi
   showStatus("Connecting WiFi...", WIFI_SSID);
@@ -251,8 +323,10 @@ void setup() {
 
   if (WiFi.status() != WL_CONNECTED) {
     showStatus("WiFi failed!", "Check SSID / password in sketch");
-    Serial.println("ERROR: WiFi connection failed — halting");
-    while (true) delay(1000);  // let user read the on-screen message
+    Serial.println("ERROR: WiFi connection failed");
+    Serial.println("Fix WIFI_SSID / WIFI_PASSWORD, then reboot.");
+    delay(10000);
+    ESP.restart();  // restart so user can reflash with correct credentials
   }
   Serial.printf("WiFi OK  IP: %s\n", WiFi.localIP().toString().c_str());
 
