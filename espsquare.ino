@@ -17,8 +17,13 @@
 #define LCD_D1   42
 #define LCD_D2   45
 #define LCD_D3   46
-#define LCD_BL   48
-#define LCD_RST  -1   // skip hardware reset; software init sequence handles it
+// Backlight: try BOTH GPIO 6 (original probe) and GPIO 48 (wiki) — only the
+// correct one has any effect; driving the wrong one HIGH is harmless.
+#define LCD_BL_A  6    // original probe BL pin
+#define LCD_BL_B  48   // Waveshare wiki BL pin
+// RST: managed manually in setup() with a proper long pulse.
+// GFX_NOT_DEFINED (-1) in the constructor tells the library not to redo it.
+#define LCD_RST  38
 
 #define BOOT_PIN  0
 
@@ -28,7 +33,7 @@ Arduino_DataBus *bus = new Arduino_ESP32QSPI(
 
 Arduino_AXS15231B *gfx = new Arduino_AXS15231B(
   bus,
-  LCD_RST,
+  GFX_NOT_DEFINED,   // RST managed manually in setup(); do NOT let library reset again
   0,
   false,
   320,
@@ -394,23 +399,54 @@ void pollBootButton() {
 
 void setup() {
   Serial.begin(115200);
-  Serial.println("Robot Eyes: 5 modes");
+  delay(200);
+  Serial.println("=== Robot Eyes booting ===");
 
-  pinMode(LCD_BL, OUTPUT);
-  digitalWrite(LCD_BL, HIGH);
+  // ---- Backlight: enable BOTH candidates simultaneously ----
+  // Once the user confirms which pin lights the screen, the other can be removed.
+  // Driving the "wrong" pin HIGH is safe — it just sets an unused GPIO output.
+  pinMode(LCD_BL_A, OUTPUT); digitalWrite(LCD_BL_A, HIGH);  // GPIO 6
+  pinMode(LCD_BL_B, OUTPUT); digitalWrite(LCD_BL_B, HIGH);  // GPIO 48
+  Serial.println("Backlight HIGH on GPIO 6 + GPIO 48");
 
+  // ---- Hardware reset: explicit long pulse so the panel exits reset cleanly ----
+  // (GFX_NOT_DEFINED in the constructor means the library will NOT touch RST again)
+  pinMode(LCD_RST, OUTPUT);
+  digitalWrite(LCD_RST, HIGH);
+  delay(10);
+  digitalWrite(LCD_RST, LOW);
+  delay(100);    // hold reset LOW for 100 ms (spec: ≥10 ms)
+  digitalWrite(LCD_RST, HIGH);
+  delay(200);    // boot time after reset HIGH (spec: ≥120 ms)
+  Serial.println("HW reset pulse done");
+
+  // ---- Init display driver ----
   if (!gfx->begin()) {
-    Serial.println("gfx->begin() failed! Check wiring.");
+    Serial.println("ERROR: gfx->begin() failed! Check QSPI wiring.");
     delay(5000);
     ESP.restart();
   }
+  Serial.printf("gfx->begin() OK  native: %dx%d\n", gfx->width(), gfx->height());
 
+  // ---- Bright test patterns — confirm ANY pixel reaches the panel ----
+  // 1-second each is enough to see visually; remove after confirming display works.
+  gfx->fillScreen(0xF800);   // full-screen RED
+  Serial.println("fillScreen(RED) — screen should be red for 1 s");
+  delay(1000);
+
+  gfx->fillScreen(0x07E0);   // full-screen GREEN
+  Serial.println("fillScreen(GREEN) — screen should be green for 1 s");
+  delay(1000);
+
+  // ---- Landscape orientation and normal startup ----
   gfx->setRotation(1);
+  Serial.printf("After setRotation(1): %dx%d\n", gfx->width(), gfx->height());
 
   pinMode(BOOT_PIN, INPUT_PULLUP);
 
   setMode(0);
   sceneHome();
+  Serial.println("=== Setup complete ===");
 }
 
 void loop() {
