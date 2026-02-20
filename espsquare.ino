@@ -51,7 +51,7 @@ const char *imageUrls[NUM_IMAGES] = {
 #define BOOT_PIN  0
 
 // ---------- Display ----------
-Arduino_DataBus *bus = new Arduino_ESP32QSPI(
+Arduino_ESP32QSPI *bus = new Arduino_ESP32QSPI(
   LCD_CS, LCD_CLK, LCD_D0, LCD_D1, LCD_D2, LCD_D3);
 
 Arduino_AXS15231B *gfx = new Arduino_AXS15231B(
