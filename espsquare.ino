@@ -80,14 +80,12 @@ Arduino_AXS15231B *gfx = new Arduino_AXS15231B(
 static uint8_t DRAM_ATTR pxbuf[8192]; // 4096 pixels × 2 bytes (RGB565) per chunk
 
 // Set column / row address window on the display.
+// Uses writeC8D16D16 (SPI_TRANS_USE_TXDATA) so the 4 address bytes live inside
+// the SPI transaction struct — no external DMA buffer needed, always safe.
 static void setWindowRaw(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) {
-  uint8_t ca[4] = { (uint8_t)(x1 >> 8), (uint8_t)x1,
-                    (uint8_t)(x2 >> 8), (uint8_t)x2 };
-  uint8_t ra[4] = { (uint8_t)(y1 >> 8), (uint8_t)y1,
-                    (uint8_t)(y2 >> 8), (uint8_t)y2 };
   bus->beginWrite();
-  bus->writeC8Bytes(0x2A, ca, 4);   // CASET
-  bus->writeC8Bytes(0x2B, ra, 4);   // RASET
+  bus->writeC8D16D16(0x2A, x1, x2);   // CASET: column start → column end
+  bus->writeC8D16D16(0x2B, y1, y2);   // RASET: row start   → row end
   bus->endWrite();
 }
 
@@ -150,14 +148,63 @@ bool lastBoot     = true;
 uint32_t lastDebounce = 0;
 
 // ---------- Helpers ----------
-// Print status to Serial. Also clears the display to black so the user
-// can see when a new operation starts (even if text rendering still fails).
+// Clear display to black + print status to Serial.
+// (gfx text calls use the broken opcode-0x32 path, so status is Serial-only.)
 void showStatus(const char *line1, const char *line2 = nullptr) {
-  fillDisplayRaw(0x0000);   // black — uses the working opcode-0x02 path
+  fillDisplayRaw(0x0000);
   Serial.println(line1);
   if (line2) Serial.println(line2);
-  // Note: gfx text calls (gfx->println) use the opcode-0x32 path that may
-  // not work on this panel.  Status is available in Serial Monitor instead.
+}
+
+// Draw a horizontal progress bar across the bottom of the display.
+// fraction: 0.0 = empty, 1.0 = full.  Uses opcode-0x02 writes.
+void drawProgressBar(float fraction) {
+  const uint16_t W = gfx->width(), H = gfx->height();
+  const uint16_t barH = 16;
+  const uint16_t y0   = H - barH;
+  if (fraction < 0.0f) fraction = 0.0f;
+  if (fraction > 1.0f) fraction = 1.0f;
+  uint16_t filled = (uint16_t)(fraction * W);
+
+  // Filled portion — cyan
+  if (filled > 0) {
+    uint8_t cyan_hi = 0x07, cyan_lo = 0xFF;   // ~0x07FF = cyan
+    for (uint32_t i = 0; i < sizeof(pxbuf); i += 2) {
+      pxbuf[i]     = cyan_hi;
+      pxbuf[i + 1] = cyan_lo;
+    }
+    setWindowRaw(0, y0, filled - 1, H - 1);
+    uint32_t rem = (uint32_t)filled * barH;
+    bool first = true;
+    while (rem > 0) {
+      uint32_t chunk = rem > sizeof(pxbuf) / 2 ? sizeof(pxbuf) / 2 : rem;
+      bus->beginWrite();
+      bus->writeC8Bytes(first ? 0x2C : 0x3C, pxbuf, chunk * 2);
+      bus->endWrite();
+      rem   -= chunk;
+      first  = false;
+    }
+  }
+
+  // Empty portion — dark grey
+  if (filled < W) {
+    uint8_t grey_hi = 0x18, grey_lo = 0xC3;  // ~0x18C3 = dark grey
+    for (uint32_t i = 0; i < sizeof(pxbuf); i += 2) {
+      pxbuf[i]     = grey_hi;
+      pxbuf[i + 1] = grey_lo;
+    }
+    setWindowRaw(filled, y0, W - 1, H - 1);
+    uint32_t rem = (uint32_t)(W - filled) * barH;
+    bool first = true;
+    while (rem > 0) {
+      uint32_t chunk = rem > sizeof(pxbuf) / 2 ? sizeof(pxbuf) / 2 : rem;
+      bus->beginWrite();
+      bus->writeC8Bytes(first ? 0x2C : 0x3C, pxbuf, chunk * 2);
+      bus->endWrite();
+      rem   -= chunk;
+      first  = false;
+    }
+  }
 }
 
 // ---------- Core: fetch a JPEG from a URL and display it ----------
@@ -203,15 +250,22 @@ void showImage(int idx) {
     return;
   }
 
-  // Read response body into buffer
+  // Read response body into buffer, showing a progress bar as we go
   WiFiClient *stream = http.getStreamPtr();
   size_t total = 0;
   uint32_t deadline = millis() + 15000;
+  uint32_t lastBarUpdate = 0;
   while (millis() < deadline && total < bufSize) {
     size_t avail = stream->available();
     if (avail > 0) {
       total += stream->readBytes(buf + total,
                                  min(avail, bufSize - total));
+      // Redraw progress bar at most every 200 ms to avoid slowing the download
+      if (millis() - lastBarUpdate > 200) {
+        float frac = (contentLen > 0) ? (float)total / contentLen : 0.5f;
+        drawProgressBar(frac);
+        lastBarUpdate = millis();
+      }
     } else if (!stream->connected()) {
       break;
     } else {
@@ -219,6 +273,7 @@ void showImage(int idx) {
     }
     if (contentLen > 0 && total >= (size_t)contentLen) break;
   }
+  drawProgressBar(1.0f);  // fill bar on completion
   http.end();
   Serial.printf("Downloaded %u bytes\n", (unsigned)total);
 
