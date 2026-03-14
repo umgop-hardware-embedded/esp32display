@@ -37,9 +37,10 @@ class MainActivity : AppCompatActivity() {
                         if (granted) {
                             updateStatus()
                             toast("Permission granted! Connecting...")
-                            // Small delay to ensure permission is fully processed
+                            permissionRequested = false
+                            // Re-request to handle second device, or open ports if all done
                             statusText.postDelayed({ 
-                                openSerialPorts()
+                                requestUsbPermission()
                             }, 300)
                         } else {
                             updateStatus()
@@ -191,11 +192,13 @@ class MainActivity : AppCompatActivity() {
                     port1 = port
                     device1Enabled = true
                     findViewById<ToggleButton>(R.id.toggleDevice1).isEnabled = true
+                    findViewById<ToggleButton>(R.id.toggleDevice1).isChecked = true
                     connectedCount++
                 } else if (i == 1) {
                     port2 = port
                     device2Enabled = true
                     findViewById<ToggleButton>(R.id.toggleDevice2).isEnabled = true
+                    findViewById<ToggleButton>(R.id.toggleDevice2).isChecked = true
                     connectedCount++
                 }
                 
@@ -246,10 +249,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateStatus(status: String) {
-        val device1Status = if (port1 != null) "✓" else "✗"
-        val device2Status = if (port2 != null) "✓" else "✗"
-        statusText.text = "Device 1: $device1Status | Device 2: $device2Status"
+    private fun updateStatus() {
+        val d1Connected = if (port1 != null) "✓" else "✗"
+        val d2Connected = if (port2 != null) "✓" else "✗"
+        val d1Target = if (device1Enabled) "ON" else "OFF"
+        val d2Target = if (device2Enabled) "ON" else "OFF"
+        statusText.text = "ESP32 #1: $d1Connected ($d1Target) | ESP32 #2: $d2Connected ($d2Target)"
     }
 
     private fun toast(msg: String) = Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
