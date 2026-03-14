@@ -1,0 +1,30 @@
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/UsbDeviceConnectionJNI( 4654): device is closed in native_claim_interface
+E/UsbDeviceConnectionJNI( 4654): device is closed in native_control_request
+E/UsbDeviceConnectionJNI( 4654): device is closed in native_release_interface
+E/UsbDeviceConnectionJNI( 4654): device is closed in native_claim_interface
+E/UsbDeviceConnectionJNI( 4654): device is closed in native_release_interface
+E/UsbDeviceConnectionJNI( 4654): device is closed in native_claim_interface
+E/UsbDeviceConnectionJNI( 4654): device is closed in native_release_interface
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/BufferQueueProducer(  190): [com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity#0](id:be00000917,api:0,p:-1,c:190) disconnect: not connected (req=1)
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
+E/BufferQueueProducer(  190): [com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity#0](id:be00000927,api:0,p:-1,c:190) disconnect: not connected (req=1)

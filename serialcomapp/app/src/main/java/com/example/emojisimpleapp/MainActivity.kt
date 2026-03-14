@@ -94,135 +94,148 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun findAllSerialDevices(): List<UsbSerialDriver> {
-        val result = mutableListOf<UsbSerialDriver>()
-        val matchedIds = mutableSetOf<Int>()
+    /**
+     * Request permissions for all USB devices (except hubs/HID), then connect.
+     */
+    private fun requestPermissionsAndConnect() {
+        if (permissionRequested) return
 
-        // Default prober catches well-known VID/PIDs
-        for (d in UsbSerialProber.getDefaultProber().findAllDrivers(usbManager)) {
-            result.add(d); matchedIds.add(d.device.deviceId)
+        // Skip hubs (9), HID (3), mass storage (8), misc (0)
+        val skipClasses = setOf(0, 3, 8, 9)
+        val usbDevices = usbManager.deviceList.values.filter { it.deviceClass !in skipClasses }
+
+        if (usbDevices.isEmpty()) {
+            toast("No USB devices found")
+            updateStatus(); return
         }
 
-        // Brute-force remaining USB devices with all driver types
-        // Skip hubs (class 9), HID (class 3), mass storage (class 8)
+        // Request permission one at a time
+        for (device in usbDevices) {
+            if (!usbManager.hasPermission(device)) {
+                permissionRequested = true
+                val intent = Intent(ACTION_USB_PERMISSION).apply { setPackage(packageName) }
+                val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+                    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+                else PendingIntent.FLAG_UPDATE_CURRENT
+                usbManager.requestPermission(device, PendingIntent.getBroadcast(this, 0, intent, flags))
+                return
+            }
+        }
+
+        // All permitted — try to open
+        openSerialPorts()
+    }
+
+    /**
+     * Open serial ports. For each USB device:
+     * 1) Try default prober first
+     * 2) If not matched, try each driver type with a FRESH connection each time
+     */
+    private fun openSerialPorts() {
         val skipClasses = setOf(0, 3, 8, 9)
+        val usbDevices = usbManager.deviceList.values.filter {
+            it.deviceClass !in skipClasses && usbManager.hasPermission(it)
+        }
+
         val driverTypes = listOf(
             CdcAcmSerialDriver::class.java,
             Ch34xSerialDriver::class.java,
             Cp21xxSerialDriver::class.java,
             FtdiSerialDriver::class.java
         )
-        for (device in usbManager.deviceList.values) {
-            if (device.deviceId in matchedIds) continue
-            if (device.deviceClass in skipClasses) continue
+
+        var count = 0
+
+        for (device in usbDevices) {
+            if (count >= 2) break
+
+            // 1) Try default prober
+            val defaultDriver = UsbSerialProber.getDefaultProber()
+                .findAllDrivers(usbManager)
+                .firstOrNull { it.device.deviceId == device.deviceId }
+
+            if (defaultDriver != null) {
+                val conn = usbManager.openDevice(device) ?: continue
+                try {
+                    val sp = defaultDriver.ports[0]
+                    sp.open(conn)
+                    sp.setParameters(115200, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
+                    assignPort(count, sp)
+                    count++
+                    continue
+                } catch (_: Exception) {
+                    conn.close()
+                }
+            }
+
+            // 2) Brute-force: try each driver with a NEW connection each time
             for (dt in driverTypes) {
+                if (count >= 2) break
+                // Fresh connection for each attempt
+                val conn = usbManager.openDevice(device) ?: break
                 try {
                     val table = ProbeTable()
                     table.addProduct(device.vendorId, device.productId, dt)
-                    val found = UsbSerialProber(table).findAllDrivers(usbManager)
-                    if (found.isNotEmpty()) {
-                        result.addAll(found); matchedIds.add(device.deviceId); break
-                    }
-                } catch (_: Exception) {}
-            }
-        }
-        return result
-    }
+                    val drivers = UsbSerialProber(table).findAllDrivers(usbManager)
+                    if (drivers.isEmpty()) { conn.close(); continue }
 
-    private fun requestPermissionsAndConnect() {
-        if (permissionRequested) return
-        val serialDevices = findAllSerialDevices()
-        toast("Found ${serialDevices.size} serial device(s)")
-        if (serialDevices.isEmpty()) {
-            toast("No ESP32 found. Check USB hub.")
-            updateStatus(); return
-        }
-        // Request permission for serial devices only
-        for (driver in serialDevices) {
-            if (!usbManager.hasPermission(driver.device)) {
-                val name = driver.device.productName ?: "VID=${driver.device.vendorId}"
-                permissionRequested = true
-                toast("Requesting permission: $name")
-                val intent = Intent(ACTION_USB_PERMISSION).apply { setPackage(packageName) }
-                val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
-                    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-                else PendingIntent.FLAG_UPDATE_CURRENT
-                usbManager.requestPermission(driver.device, PendingIntent.getBroadcast(this, 0, intent, flags))
-                return
-            }
-        }
-        // All have permission
-        openSerialPorts(serialDevices)
-    }
-
-    private fun openSerialPorts(serialDevices: List<UsbSerialDriver>) {
-        var count = 0
-        for (driver in serialDevices) {
-            if (count >= 2) break
-            val conn = usbManager.openDevice(driver.device)
-            if (conn == null) { toast("Can't open device"); continue }
-            for (sp in driver.ports) {
-                if (count >= 2) break
-                try {
+                    val sp = drivers[0].ports[0]
                     sp.open(conn)
                     sp.setParameters(115200, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
-                    if (count == 0) {
-                        port1 = sp; device1Enabled = true
-                        findViewById<ToggleButton>(R.id.toggleDevice1).isEnabled = true
-                        findViewById<ToggleButton>(R.id.toggleDevice1).isChecked = true
-                    } else {
-                        port2 = sp; device2Enabled = true
-                        findViewById<ToggleButton>(R.id.toggleDevice2).isEnabled = true
-                        findViewById<ToggleButton>(R.id.toggleDevice2).isChecked = true
-                    }
-                    count++; toast("ESP32 #$count ✓")
-                } catch (e: Exception) {
-                    toast("Open failed: ${e.message}")
+                    assignPort(count, sp)
+                    count++
+                    break // success, move to next device
+                } catch (_: Exception) {
+                    conn.close()
+                    // try next driver type
                 }
             }
         }
-        toast("$count device(s) connected")
+
+        toast("$count ESP32(s) connected")
         updateStatus()
+    }
+
+    private fun assignPort(index: Int, sp: UsbSerialPort) {
+        if (index == 0) {
+            port1 = sp; device1Enabled = true
+            findViewById<ToggleButton>(R.id.toggleDevice1).isEnabled = true
+            findViewById<ToggleButton>(R.id.toggleDevice1).isChecked = true
+        } else {
+            port2 = sp; device2Enabled = true
+            findViewById<ToggleButton>(R.id.toggleDevice2).isEnabled = true
+            findViewById<ToggleButton>(R.id.toggleDevice2).isChecked = true
+        }
     }
 
     private fun sendToDevices(num: String) {
         var sent = 0
         if (device1Enabled && port1 != null) {
             try { port1?.write("$num\n".toByteArray(), 200); sent++ }
-            catch (e: Exception) { toast("D1 fail: ${e.message}") }
+            catch (_: Exception) {}
         }
         if (device2Enabled && port2 != null) {
             try { port2?.write("$num\n".toByteArray(), 200); sent++ }
-            catch (e: Exception) { toast("D2 fail: ${e.message}") }
+            catch (_: Exception) {}
         }
-        if (sent > 0) toast("Sent '$num' → $sent device(s)")
+        if (sent > 0) toast("Sent '$num' → $sent")
         else toast("No devices connected")
     }
 
     private fun updateStatus() {
-        val d1Connected = if (port1 != null) "✓" else "✗"
-        val d2Connected = if (port2 != null) "✓" else "✗"
-        val d1Target = if (device1Enabled) "ON" else "OFF"
-        val d2Target = if (device2Enabled) "ON" else "OFF"
-        statusText.text = "ESP32 #1: $d1Connected ($d1Target) | ESP32 #2: $d2Connected ($d2Target)"
+        val d1 = if (port1 != null) "✓" else "✗"
+        val d2 = if (port2 != null) "✓" else "✗"
+        val t1 = if (device1Enabled) "ON" else "OFF"
+        val t2 = if (device2Enabled) "ON" else "OFF"
+        statusText.text = "ESP32 #1: $d1 ($t1) | ESP32 #2: $d2 ($t2)"
     }
 
     private fun toast(msg: String) = Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 
     override fun onDestroy() {
         super.onDestroy()
-        try {
-            port1?.close()
-            port2?.close()
-            port1 = null
-            port2 = null
-        } catch (e: Exception) {
-            // Ignore close errors
-        }
-        try {
-            unregisterReceiver(usbPermissionReceiver)
-        } catch (e: Exception) {
-            // Receiver might not be registered
-        }
+        try { port1?.close(); port2?.close() } catch (_: Exception) {}
+        port1 = null; port2 = null
+        try { unregisterReceiver(usbPermissionReceiver) } catch (_: Exception) {}
     }
 }
