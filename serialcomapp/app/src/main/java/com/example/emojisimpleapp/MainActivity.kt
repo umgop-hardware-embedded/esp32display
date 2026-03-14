@@ -124,41 +124,44 @@ class MainActivity : AppCompatActivity() {
             
             val drivers = UsbSerialProber.getDefaultProber().findAllDrivers(usbManager)
             if (drivers.isEmpty()) {
+                // Also check raw USB device list for unprobed devices
+                val deviceList = usbManager.deviceList
+                toast("No serial drivers. Raw USB devices: ${deviceList.size}")
                 updateStatus()
-                toast("No USB devices found. Connect ESP32s via USB OTG hub.")
                 permissionRequested = false
                 return
             }
             
-            // Request permission for all available devices
-            for (driver in drivers) {
-                val device = driver.device
+            toast("Found ${drivers.size} serial driver(s)")
+            
+            // Collect unique USB devices that need permission
+            val devicesNeedingPermission = drivers
+                .map { it.device }
+                .distinctBy { it.deviceId }
+                .filter { !usbManager.hasPermission(it) }
+            
+            if (devicesNeedingPermission.isNotEmpty()) {
+                val device = devicesNeedingPermission[0]
                 val deviceName = device.productName ?: device.deviceName ?: "Unknown"
-                toast("Found: $deviceName")
-                
-                if (!usbManager.hasPermission(device)) {
-                    permissionRequested = true
-                    updateStatus()
-                    toast("Grant permission in the dialog")
-                    val intent = Intent(ACTION_USB_PERMISSION)
-                    intent.setPackage(packageName)
-                    val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                        PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-                    } else {
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                    }
-                    val pi = PendingIntent.getBroadcast(this, 0, intent, flags)
-                    usbManager.requestPermission(device, pi)
-                    return
+                permissionRequested = true
+                toast("Requesting permission for: $deviceName")
+                val intent = Intent(ACTION_USB_PERMISSION)
+                intent.setPackage(packageName)
+                val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+                } else {
+                    PendingIntent.FLAG_UPDATE_CURRENT
                 }
+                val pi = PendingIntent.getBroadcast(this, 0, intent, flags)
+                usbManager.requestPermission(device, pi)
+                return
             }
             
-            // All devices already have permission
-            updateStatus()
+            // All devices have permission — open them
             openSerialPorts()
         } catch (e: Exception) {
             updateStatus()
-            toast("Error requesting permission: ${e.message}")
+            toast("Error: ${e.message}")
             permissionRequested = false
         }
     }
@@ -166,48 +169,59 @@ class MainActivity : AppCompatActivity() {
     private fun openSerialPorts() {
         val drivers = UsbSerialProber.getDefaultProber().findAllDrivers(usbManager)
         if (drivers.isEmpty()) {
+            toast("No USB serial devices found")
             updateStatus()
             return
         }
         
+        toast("Found ${drivers.size} driver(s)")
+        
+        // Collect all available ports from all drivers
+        val allPorts = mutableListOf<Pair<UsbSerialPort, android.hardware.usb.UsbDevice>>()
+        for (driver in drivers) {
+            for (port in driver.ports) {
+                allPorts.add(Pair(port, driver.device))
+            }
+        }
+        
+        toast("Found ${allPorts.size} total port(s)")
+        
         var connectedCount = 0
         
-        // Open up to 2 devices
-        for (i in 0 until minOf(2, drivers.size)) {
+        // Open up to 2 ports
+        for (i in 0 until minOf(2, allPorts.size)) {
             try {
-                val driver = drivers[i]
-                val device = driver.device
+                val (port, device) = allPorts[i]
                 
                 val connection = usbManager.openDevice(device)
                 if (connection == null) {
-                    toast("Failed to open device ${i+1}")
+                    toast("Failed to open device ${i+1} - no permission?")
                     continue
                 }
                 
-                val port = driver.ports[0]
                 port.open(connection)
                 port.setParameters(115200, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
                 
-                if (i == 0) {
+                if (connectedCount == 0) {
                     port1 = port
                     device1Enabled = true
                     findViewById<ToggleButton>(R.id.toggleDevice1).isEnabled = true
                     findViewById<ToggleButton>(R.id.toggleDevice1).isChecked = true
-                    connectedCount++
-                } else if (i == 1) {
+                } else if (connectedCount == 1) {
                     port2 = port
                     device2Enabled = true
                     findViewById<ToggleButton>(R.id.toggleDevice2).isEnabled = true
                     findViewById<ToggleButton>(R.id.toggleDevice2).isChecked = true
-                    connectedCount++
                 }
                 
-                toast("Connected device ${i+1}")
+                connectedCount++
+                toast("Connected ESP32 #$connectedCount")
             } catch (e: Exception) {
-                toast("Connection error device ${i+1}: ${e.message}")
+                toast("Error device ${i+1}: ${e.message}")
             }
         }
         
+        toast("$connectedCount device(s) connected")
         updateStatus()
     }
 
