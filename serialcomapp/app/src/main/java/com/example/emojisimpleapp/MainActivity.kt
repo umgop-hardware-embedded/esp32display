@@ -16,6 +16,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.hoho.android.usbserial.driver.UsbSerialPort
 import com.hoho.android.usbserial.driver.UsbSerialProber
+import com.hoho.android.usbserial.driver.CdcAcmSerialDriver
+import com.hoho.android.usbserial.driver.Ch34xSerialDriver
+import com.hoho.android.usbserial.driver.Cp21xxSerialDriver
+import com.hoho.android.usbserial.driver.FtdiSerialDriver
+import com.hoho.android.usbserial.driver.ProbeTable
 
 class MainActivity : AppCompatActivity() {
 
@@ -115,6 +120,47 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun getAllSerialDrivers(): List<com.hoho.android.usbserial.driver.UsbSerialDriver> {
+        // First try default prober
+        val defaultDrivers = UsbSerialProber.getDefaultProber().findAllDrivers(usbManager)
+        val matchedDeviceIds = defaultDrivers.map { it.device.deviceId }.toSet()
+        
+        // Then try every unmatched USB device with all known driver types
+        val customTable = ProbeTable()
+        val allDevices = usbManager.deviceList.values
+        
+        toast("Hub: ${allDevices.size} USB device(s) total")
+        
+        val extraDrivers = mutableListOf<com.hoho.android.usbserial.driver.UsbSerialDriver>()
+        for (device in allDevices) {
+            if (device.deviceId in matchedDeviceIds) continue
+            
+            // Try each driver type on unmatched devices
+            val driverTypes = listOf(
+                CdcAcmSerialDriver::class.java,
+                Cp21xxSerialDriver::class.java,
+                Ch34xSerialDriver::class.java,
+                FtdiSerialDriver::class.java
+            )
+            
+            for (driverType in driverTypes) {
+                try {
+                    val table = ProbeTable()
+                    table.addProduct(device.vendorId, device.productId, driverType)
+                    val prober = UsbSerialProber(table)
+                    val found = prober.findAllDrivers(usbManager)
+                    if (found.isNotEmpty()) {
+                        extraDrivers.addAll(found)
+                        toast("Extra device found: VID=${device.vendorId} PID=${device.productId}")
+                        break
+                    }
+                } catch (_: Exception) {}
+            }
+        }
+        
+        return defaultDrivers + extraDrivers
+    }
+
     private fun requestUsbPermission() {
         try {
             if (permissionRequested) {
@@ -122,9 +168,8 @@ class MainActivity : AppCompatActivity() {
                 return
             }
             
-            val drivers = UsbSerialProber.getDefaultProber().findAllDrivers(usbManager)
+            val drivers = getAllSerialDrivers()
             if (drivers.isEmpty()) {
-                // Also check raw USB device list for unprobed devices
                 val deviceList = usbManager.deviceList
                 toast("No serial drivers. Raw USB devices: ${deviceList.size}")
                 updateStatus()
@@ -167,7 +212,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openSerialPorts() {
-        val drivers = UsbSerialProber.getDefaultProber().findAllDrivers(usbManager)
+        val drivers = getAllSerialDrivers()
         if (drivers.isEmpty()) {
             toast("No USB serial devices found")
             updateStatus()
