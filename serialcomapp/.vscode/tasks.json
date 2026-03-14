@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build Debug APK",
+			"type": "shell",
+			"command": "./gradlew assembleDebug",
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Clean Build Debug APK",
+			"type": "shell",
+			"command": "./gradlew clean assembleDebug",
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}

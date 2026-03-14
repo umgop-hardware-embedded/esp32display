@@ -1,0 +1,270 @@
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=255,mEndpoints=[
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=131,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=2,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=2,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=133,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=132,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=3,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=3,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=135,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=134,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=4,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=4,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=255,mEndpoints=[
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=137,mAttributes=3,mMaxPacketSize=8,mInterval=9]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=136,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=5,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:25.783  9824  9824 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:51:25.785  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:25.786  9824  9824 W DualESP32: Brute-force CdcAcmSerialDriver failed: No control endpoint
+03-14 08:51:25.808  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:25.808  9824  9824 W DualESP32: Brute-force Ch34xSerialDriver failed: Failed send cmd [init #1]
+03-14 08:51:25.823  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:25.823  9824  9824 W DualESP32: Brute-force Cp21xxSerialDriver failed: Control transfer failed: 0 / 1 -> -1
+03-14 08:51:25.839  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:25.839  9824  9824 W DualESP32: Brute-force FtdiSerialDriver failed: Reset failed: result=-1
+03-14 08:51:25.840  9824  9824 D DualESP32: Brute-force trying: id=1003 VID=0x1d6b PID=0xa4a6 class=239
+03-14 08:51:25.844  9824  9824 D CdcAcmSerialDriver: interfaces:
+03-14 08:51:25.844  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=Topology Control,mClass=1,mSubclass=1,mProtocol=32,mEndpoints=[]
+03-14 08:51:25.844  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=Capture Inactive,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[]
+03-14 08:51:25.844  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=1,mName=Capture Active,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[
+03-14 08:51:25.844  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=13,mMaxPacketSize=512,mInterval=4]]
+03-14 08:51:25.844  9824  9824 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:51:25.850  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:25.851  9824  9824 W DualESP32: Brute-force CdcAcmSerialDriver failed: No control endpoint
+03-14 08:51:25.859  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:25.859  9824  9824 W DualESP32: Brute-force Ch34xSerialDriver failed: Failed send cmd [init #1]
+03-14 08:51:25.871  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:25.872  9824  9824 W DualESP32: Brute-force Cp21xxSerialDriver failed: Control transfer failed: 0 / 1 -> -1
+03-14 08:51:25.893  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:25.893  9824  9824 W DualESP32: Brute-force FtdiSerialDriver failed: Not enough endpoints
+03-14 08:51:25.895  9824  9824 D DualESP32: Brute-force trying: id=5002 VID=0x1a86 PID=0xe2e4 class=0
+03-14 08:51:25.900  9824  9824 D CdcAcmSerialDriver: interfaces:
+03-14 08:51:25.900  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=3,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:51:25.900  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=3,mMaxPacketSize=64,mInterval=1]]
+03-14 08:51:25.900  9824  9824 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:51:25.925   491   561 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{3740088 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x5360d85
+03-14 08:51:25.949   491   871 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{3740088 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x5360d85
+03-14 08:51:25.959   491   512 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{3740088 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x5360d85
+03-14 08:51:25.970   491   871 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{3740088 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x5360d85
+03-14 08:51:25.980   491   767 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{3740088 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x5360d85
+03-14 08:51:26.014   491   512 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{3740088 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x5360d85
+03-14 08:51:26.088  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:26.088  9824  9824 W DualESP32: Brute-force CdcAcmSerialDriver failed: Could not get read & write endpoints
+03-14 08:51:26.092   491   512 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{3740088 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x5360d85
+03-14 08:51:26.099   491   871 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{3740088 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x5360d85
+03-14 08:51:26.108   491   512 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{3740088 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x5360d85
+03-14 08:51:26.113   491  8990 V WindowManager: getPackagePerformanceMode -- ComponentInfo{com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity} -- com.example.emojisimpleapp -- mode=0
+03-14 08:51:26.129   491   511 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{3740088 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x5360d85
+03-14 08:51:26.237  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:26.238  9824  9824 W DualESP32: Brute-force Ch34xSerialDriver failed: Failed send cmd [init #1]
+03-14 08:51:26.389  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:26.390  9824  9824 W DualESP32: Brute-force Cp21xxSerialDriver failed: Control transfer failed: 0 / 1 -> -1
+03-14 08:51:26.517  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:26.518  9824  9824 W DualESP32: Brute-force FtdiSerialDriver failed: Not enough endpoints
+03-14 08:51:26.518  9824  9824 D DualESP32: Total: 1 ESP32(s) connected
+03-14 08:51:26.547   190  1001 E BufferQueueProducer: [com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity#0](id:be00000ac0,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:51:26.621   491   767 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@f6b0fe1
+03-14 08:51:26.775  9824  9824 D DualESP32: USB bus: id=1004 VID=0x2c7c PID=0x125 class=239 name=EG25-GC perm=true
+03-14 08:51:26.776  9824  9824 D DualESP32: USB bus: id=7007 VID=0x303a PID=0x1001 class=239 name=USB JTAG/serial debug unitÀ€ perm=true
+03-14 08:51:26.777  9824  9824 D DualESP32: USB bus: id=1003 VID=0x1d6b PID=0xa4a6 class=239 name=Bothlent UAC Dongle perm=true
+03-14 08:51:26.778  9824  9824 D DualESP32: USB bus: id=5002 VID=0x1a86 PID=0xe2e4 class=0 name=Touch perm=true
+03-14 08:51:26.788  9824  9824 D DualESP32: Default prober found 1 driver(s)
+03-14 08:51:26.790   491   512 I WindowManager: Screen frozen for +911ms due to Window{c9694bf u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}
+03-14 08:51:26.793  9824  9824 D CdcAcmSerialDriver: interfaces:
+03-14 08:51:26.793  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=2,mSubclass=2,mProtocol=0,mEndpoints=[
+03-14 08:51:26.793  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=3,mMaxPacketSize=64,mInterval=1]]
+03-14 08:51:26.793  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=null,mClass=10,mSubclass=2,mProtocol=0,mEndpoints=[
+03-14 08:51:26.793  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=64,mInterval=1]
+03-14 08:51:26.793  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=64,mInterval=1]]
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=2,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=1,mEndpoints=[
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=2,mAttributes=2,mMaxPacketSize=64,mInterval=1]
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=131,mAttributes=2,mMaxPacketSize=64,mInterval=1]]
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: trying default interface logic
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: USB descriptor:
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 12 01 00 02 EF 02 01 40 3A 30 01 10 01 01 01 02 03 01
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 09 02 62 00 03 01 00 C0 FA
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 08 0B 00 02 02 02 00 00
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 09 04 00 00 01 02 02 00 00
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 05 24 00 10 01
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 04 24 02 02
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 05 24 06 00 01
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 05 24 01 03 01
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 07 05 82 03 40 00 01
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 09 04 01 00 02 0A 02 00 00
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 07 05 01 02 40 00 01
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 07 05 81 02 40 00 01
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 09 04 02 00 02 FF FF 01 00
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 07 05 02 02 40 00 01
+03-14 08:51:26.794  9824  9824 D CdcAcmSerialDriver: 07 05 83 02 40 00 01
+03-14 08:51:26.795  9824  9824 D CdcAcmSerialDriver: interface count=3, IAD=0
+03-14 08:51:26.795  9824  9824 D CdcAcmSerialDriver: Control interface id 0
+03-14 08:51:26.796  9824  9824 D CdcAcmSerialDriver: data interface id 1
+03-14 08:51:26.796  9824  9824 D UsbRequestJNI: init
+03-14 08:51:26.800  9824  9824 D DualESP32: âœ“ Default prober opened #1: VID=0x303a CdcAcmSerialDriver
+03-14 08:51:26.803  9824  9824 D DualESP32: Brute-force trying: id=1004 VID=0x2c7c PID=0x125 class=239
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: interfaces:
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=255,mEndpoints=[
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=131,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=2,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=2,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=133,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=132,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=3,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=3,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=135,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=134,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=4,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=4,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=255,mEndpoints=[
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=137,mAttributes=3,mMaxPacketSize=8,mInterval=9]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=136,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=5,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:26.808  9824  9824 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:51:26.812  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:26.813  9824  9824 W DualESP32: Brute-force CdcAcmSerialDriver failed: No control endpoint
+03-14 08:51:26.830  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:26.830  9824  9824 W DualESP32: Brute-force Ch34xSerialDriver failed: Failed send cmd [init #1]
+03-14 08:51:26.841  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:26.842  9824  9824 W DualESP32: Brute-force Cp21xxSerialDriver failed: Control transfer failed: 0 / 1 -> -1
+03-14 08:51:26.856  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:26.856  9824  9824 W DualESP32: Brute-force FtdiSerialDriver failed: Reset failed: result=-1
+03-14 08:51:26.862  9824  9824 D DualESP32: Brute-force trying: id=1003 VID=0x1d6b PID=0xa4a6 class=239
+03-14 08:51:26.865  9824  9824 D CdcAcmSerialDriver: interfaces:
+03-14 08:51:26.865  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=Topology Control,mClass=1,mSubclass=1,mProtocol=32,mEndpoints=[]
+03-14 08:51:26.866  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=Capture Inactive,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[]
+03-14 08:51:26.866  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=1,mName=Capture Active,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[
+03-14 08:51:26.866  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=13,mMaxPacketSize=512,mInterval=4]]
+03-14 08:51:26.866  9824  9824 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:51:26.873  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:26.874  9824  9824 W DualESP32: Brute-force CdcAcmSerialDriver failed: No control endpoint
+03-14 08:51:26.886  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:26.886  9824  9824 W DualESP32: Brute-force Ch34xSerialDriver failed: Failed send cmd [init #1]
+03-14 08:51:26.896  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:26.896  9824  9824 W DualESP32: Brute-force Cp21xxSerialDriver failed: Control transfer failed: 0 / 1 -> -1
+03-14 08:51:26.905  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:26.905  9824  9824 W DualESP32: Brute-force FtdiSerialDriver failed: Not enough endpoints
+03-14 08:51:26.906  9824  9824 D DualESP32: Brute-force trying: id=5002 VID=0x1a86 PID=0xe2e4 class=0
+03-14 08:51:26.909  9824  9824 D CdcAcmSerialDriver: interfaces:
+03-14 08:51:26.909  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=3,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:51:26.909  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=3,mMaxPacketSize=64,mInterval=1]]
+03-14 08:51:26.909  9824  9824 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:51:27.057   491   561 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{c9694bf u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x81d58f9
+03-14 08:51:27.058  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:27.059  9824  9824 W DualESP32: Brute-force CdcAcmSerialDriver failed: Could not get read & write endpoints
+03-14 08:51:27.066   491  8990 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{c9694bf u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x81d58f9
+03-14 08:51:27.078   491  8990 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{c9694bf u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x81d58f9
+03-14 08:51:27.085   491   871 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{c9694bf u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x81d58f9
+03-14 08:51:27.091   491   512 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{c9694bf u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x81d58f9
+03-14 08:51:27.096   491   767 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{c9694bf u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x81d58f9
+03-14 08:51:27.128   491   512 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{c9694bf u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x81d58f9
+03-14 08:51:27.199  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:27.199  9824  9824 W DualESP32: Brute-force Ch34xSerialDriver failed: Failed send cmd [init #1]
+03-14 08:51:27.203   491   512 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{c9694bf u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x81d58f9
+03-14 08:51:27.217   491   767 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{c9694bf u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x81d58f9
+03-14 08:51:27.224   491   767 V WindowManager: getPackagePerformanceMode -- ComponentInfo{com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity} -- com.example.emojisimpleapp -- mode=0
+03-14 08:51:27.239   491   512 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{c9694bf u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x81d58f9
+03-14 08:51:27.341  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:27.341  9824  9824 W DualESP32: Brute-force Cp21xxSerialDriver failed: Control transfer failed: 0 / 1 -> -1
+03-14 08:51:27.468  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:27.469  9824  9824 W DualESP32: Brute-force FtdiSerialDriver failed: Not enough endpoints
+03-14 08:51:27.469  9824  9824 D DualESP32: Total: 1 ESP32(s) connected
+03-14 08:51:27.509   190  1001 E BufferQueueProducer: [com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity#0](id:be00000ac3,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:51:27.708  9824  9824 D DualESP32: USB bus: id=1004 VID=0x2c7c PID=0x125 class=239 name=EG25-GC perm=true
+03-14 08:51:27.709  9824  9824 D DualESP32: USB bus: id=7007 VID=0x303a PID=0x1001 class=239 name=USB JTAG/serial debug unitÀ€ perm=true
+03-14 08:51:27.710  9824  9824 D DualESP32: USB bus: id=1003 VID=0x1d6b PID=0xa4a6 class=239 name=Bothlent UAC Dongle perm=true
+03-14 08:51:27.711  9824  9824 D DualESP32: USB bus: id=5002 VID=0x1a86 PID=0xe2e4 class=0 name=Touch perm=true
+03-14 08:51:27.716  9824  9824 D DualESP32: Default prober found 1 driver(s)
+03-14 08:51:27.720  9824  9824 D CdcAcmSerialDriver: interfaces:
+03-14 08:51:27.721  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=2,mSubclass=2,mProtocol=0,mEndpoints=[
+03-14 08:51:27.721  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=3,mMaxPacketSize=64,mInterval=1]]
+03-14 08:51:27.721  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=null,mClass=10,mSubclass=2,mProtocol=0,mEndpoints=[
+03-14 08:51:27.721  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=64,mInterval=1]
+03-14 08:51:27.721  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=64,mInterval=1]]
+03-14 08:51:27.721  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=2,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=1,mEndpoints=[
+03-14 08:51:27.721  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=2,mAttributes=2,mMaxPacketSize=64,mInterval=1]
+03-14 08:51:27.721  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=131,mAttributes=2,mMaxPacketSize=64,mInterval=1]]
+03-14 08:51:27.721  9824  9824 D CdcAcmSerialDriver: trying default interface logic
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: USB descriptor:
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 12 01 00 02 EF 02 01 40 3A 30 01 10 01 01 01 02 03 01
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 09 02 62 00 03 01 00 C0 FA
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 08 0B 00 02 02 02 00 00
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 09 04 00 00 01 02 02 00 00
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 05 24 00 10 01
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 04 24 02 02
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 05 24 06 00 01
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 05 24 01 03 01
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 07 05 82 03 40 00 01
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 09 04 01 00 02 0A 02 00 00
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 07 05 01 02 40 00 01
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 07 05 81 02 40 00 01
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 09 04 02 00 02 FF FF 01 00
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 07 05 02 02 40 00 01
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: 07 05 83 02 40 00 01
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: interface count=3, IAD=0
+03-14 08:51:27.722  9824  9824 D CdcAcmSerialDriver: Control interface id 0
+03-14 08:51:27.723  9824  9824 D CdcAcmSerialDriver: data interface id 1
+03-14 08:51:27.723  9824  9824 D UsbRequestJNI: init
+03-14 08:51:27.724   491   512 I WindowManager: Screen frozen for +716ms due to Window{a89b220 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}
+03-14 08:51:27.731  9824  9824 D DualESP32: âœ“ Default prober opened #1: VID=0x303a CdcAcmSerialDriver
+03-14 08:51:27.735  9824  9824 D DualESP32: Brute-force trying: id=1004 VID=0x2c7c PID=0x125 class=239
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: interfaces:
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=255,mEndpoints=[
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=131,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=2,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=2,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=133,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=132,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=3,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=3,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=135,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=134,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=4,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=4,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=255,mEndpoints=[
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=137,mAttributes=3,mMaxPacketSize=8,mInterval=9]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=136,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=5,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:51:27.739  9824  9824 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:51:27.743  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:27.744  9824  9824 W DualESP32: Brute-force CdcAcmSerialDriver failed: No control endpoint
+03-14 08:51:27.778  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:27.778  9824  9824 W DualESP32: Brute-force Ch34xSerialDriver failed: Failed send cmd [init #1]
+03-14 08:51:27.792  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:27.793  9824  9824 W DualESP32: Brute-force Cp21xxSerialDriver failed: Control transfer failed: 0 / 1 -> -1
+03-14 08:51:27.820  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:27.820  9824  9824 W DualESP32: Brute-force FtdiSerialDriver failed: Reset failed: result=-1
+03-14 08:51:27.821  9824  9824 D DualESP32: Brute-force trying: id=1003 VID=0x1d6b PID=0xa4a6 class=239
+03-14 08:51:27.835  9824  9824 D CdcAcmSerialDriver: interfaces:
+03-14 08:51:27.835  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=Topology Control,mClass=1,mSubclass=1,mProtocol=32,mEndpoints=[]
+03-14 08:51:27.835  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=Capture Inactive,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[]
+03-14 08:51:27.835  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=1,mName=Capture Active,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[
+03-14 08:51:27.835  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=13,mMaxPacketSize=512,mInterval=4]]
+03-14 08:51:27.835  9824  9824 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:51:27.838  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:27.838  9824  9824 W DualESP32: Brute-force CdcAcmSerialDriver failed: No control endpoint
+03-14 08:51:27.848  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:27.848  9824  9824 W DualESP32: Brute-force Ch34xSerialDriver failed: Failed send cmd [init #1]
+03-14 08:51:27.873  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:27.874  9824  9824 W DualESP32: Brute-force Cp21xxSerialDriver failed: Control transfer failed: 0 / 1 -> -1
+03-14 08:51:27.885  9824  9824 D UsbDeviceConnectionJNI: close
+03-14 08:51:27.885  9824  9824 W DualESP32: Brute-force FtdiSerialDriver failed: Not enough endpoints
+03-14 08:51:27.886  9824  9824 D DualESP32: Brute-force trying: id=5002 VID=0x1a86 PID=0xe2e4 class=0
+03-14 08:51:27.889  9824  9824 D CdcAcmSerialDriver: interfaces:
+03-14 08:51:27.889  9824  9824 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=3,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:51:27.889  9824  9824 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=3,mMaxPacketSize=64,mInterval=1]]
+03-14 08:51:27.889  9824  9824 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:51:27.897   491   561 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{a89b220 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x2828bbd
+03-14 08:51:27.908   491   767 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{a89b220 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x2828bbd
+03-14 08:51:27.947   491   871 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{a89b220 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x2828bbd
+03-14 08:51:27.975   491   512 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{a89b220 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x2828bbd
+03-14 08:51:27.986   491   871 V WindowManager: Orientation start waiting for draw, mDrawState=DRAW_PENDING in Window{a89b220 u0 com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity}, surfaceController Surface(name=com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity)/@0x2828bbd

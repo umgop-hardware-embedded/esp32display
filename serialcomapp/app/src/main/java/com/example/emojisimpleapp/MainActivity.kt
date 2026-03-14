@@ -20,7 +20,6 @@ import com.hoho.android.usbserial.driver.Ch34xSerialDriver
 import com.hoho.android.usbserial.driver.Cp21xxSerialDriver
 import com.hoho.android.usbserial.driver.FtdiSerialDriver
 import com.hoho.android.usbserial.driver.ProbeTable
-import com.hoho.android.usbserial.driver.UsbSerialDriver
 import com.hoho.android.usbserial.driver.UsbSerialPort
 import com.hoho.android.usbserial.driver.UsbSerialProber
 
@@ -35,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private var permissionRequested = false
     private var device1Enabled = true
     private var device2Enabled = true
+    private var connected = false
 
     private val usbPermissionReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
             findViewById<Button>(R.id.btnReconnect).setOnClickListener {
                 try { port1?.close(); port2?.close() } catch (_: Exception) {}
-                port1 = null; port2 = null; permissionRequested = false
+                port1 = null; port2 = null; permissionRequested = false; connected = false
                 updateStatus(); toast("Reconnecting...")
                 statusText.postDelayed({ requestPermissionsAndConnect() }, 500)
             }
@@ -102,6 +102,7 @@ class MainActivity : AppCompatActivity() {
      */
     private fun requestPermissionsAndConnect() {
         if (permissionRequested) return
+        if (connected) return  // Already connected, don't re-run
 
         // Log every USB device on the bus for debugging
         for (dev in usbManager.deviceList.values) {
@@ -171,8 +172,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Step 2: Brute-force remaining devices with a fresh connection per driver attempt.
-        // Skip device classes that are definitely NOT serial ports to avoid kernel driver conflicts.
-        val skipBruteForce = setOf(1, 3, 8, 9, 0xE0) // audio, HID, mass-storage, hub, wireless
+        // Check each device's INTERFACE classes to skip non-serial devices.
+        val skipInterfaceClasses = setOf(1, 3, 8, 14, 0xE0) // audio, HID, mass-storage, video, wireless
         val driverTypes = listOf(
             CdcAcmSerialDriver::class.java,
             Ch34xSerialDriver::class.java,
@@ -184,12 +185,24 @@ class MainActivity : AppCompatActivity() {
             if (count >= 2) break
             if (device.deviceId in openedDeviceIds) continue
             if (!usbManager.hasPermission(device)) continue
-            if (device.deviceClass in skipBruteForce) {
-                Log.d(TAG, "Skipping brute-force for class=${device.deviceClass} VID=0x${device.vendorId.toString(16)}")
+            if (device.deviceClass == 9) continue // hub
+
+            // Check interface classes: skip if ALL interfaces are non-serial types
+            val ifaceClasses = (0 until device.interfaceCount).map { device.getInterface(it).interfaceClass }.toSet()
+            val allVendorSpecific = ifaceClasses.all { it == 255 }
+            val allNonSerial = ifaceClasses.all { it in skipInterfaceClasses }
+
+            if (allNonSerial) {
+                Log.d(TAG, "Skip brute-force: VID=0x${device.vendorId.toString(16)} ifaces=$ifaceClasses (non-serial)")
+                continue
+            }
+            // 4G modems: many vendor-specific interfaces, no CDC — skip
+            if (allVendorSpecific && device.interfaceCount >= 4) {
+                Log.d(TAG, "Skip brute-force: VID=0x${device.vendorId.toString(16)} ifaces=$ifaceClasses (likely modem, ${device.interfaceCount} vendor ifaces)")
                 continue
             }
 
-            Log.d(TAG, "Brute-force trying: id=${device.deviceId} VID=0x${device.vendorId.toString(16)} PID=0x${device.productId.toString(16)} class=${device.deviceClass}")
+            Log.d(TAG, "Brute-force: id=${device.deviceId} VID=0x${device.vendorId.toString(16)} PID=0x${device.productId.toString(16)} ifaces=$ifaceClasses")
 
             for (dt in driverTypes) {
                 if (count >= 2) break
@@ -215,6 +228,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        connected = true  // Prevent re-running
         Log.d(TAG, "Total: $count ESP32(s) connected")
         toast("$count ESP32(s) connected")
         updateStatus()
