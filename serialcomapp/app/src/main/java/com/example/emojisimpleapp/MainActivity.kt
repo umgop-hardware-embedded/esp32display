@@ -168,26 +168,21 @@ class MainActivity : AppCompatActivity() {
                 return
             }
             
-            val drivers = getAllSerialDrivers()
-            if (drivers.isEmpty()) {
-                val deviceList = usbManager.deviceList
-                toast("No serial drivers. Raw USB devices: ${deviceList.size}")
+            // Request permission for ALL USB devices on the hub
+            val allDevices = usbManager.deviceList.values
+            if (allDevices.isEmpty()) {
+                toast("No USB devices found on hub")
                 updateStatus()
-                permissionRequested = false
                 return
             }
             
-            toast("Found ${drivers.size} serial driver(s)")
+            toast("${allDevices.size} USB device(s) on hub")
             
-            // Collect unique USB devices that need permission
-            val devicesNeedingPermission = drivers
-                .map { it.device }
-                .distinctBy { it.deviceId }
-                .filter { !usbManager.hasPermission(it) }
+            val needsPermission = allDevices.filter { !usbManager.hasPermission(it) }
             
-            if (devicesNeedingPermission.isNotEmpty()) {
-                val device = devicesNeedingPermission[0]
-                val deviceName = device.productName ?: device.deviceName ?: "Unknown"
+            if (needsPermission.isNotEmpty()) {
+                val device = needsPermission.first()
+                val deviceName = device.productName ?: "VID=${device.vendorId}"
                 permissionRequested = true
                 toast("Requesting permission for: $deviceName")
                 val intent = Intent(ACTION_USB_PERMISSION)
@@ -212,38 +207,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openSerialPorts() {
-        val drivers = getAllSerialDrivers()
-        if (drivers.isEmpty()) {
-            toast("No USB serial devices found")
-            updateStatus()
-            return
-        }
-        
-        toast("Found ${drivers.size} driver(s)")
-        
-        // Collect all available ports from all drivers
-        val allPorts = mutableListOf<Pair<UsbSerialPort, android.hardware.usb.UsbDevice>>()
-        for (driver in drivers) {
-            for (port in driver.ports) {
-                allPorts.add(Pair(port, driver.device))
-            }
-        }
-        
-        toast("Found ${allPorts.size} total port(s)")
+        // First: open devices matched by default prober
+        val defaultDrivers = UsbSerialProber.getDefaultProber().findAllDrivers(usbManager)
+        val matchedDeviceIds = mutableSetOf<Int>()
         
         var connectedCount = 0
         
-        // Open up to 2 ports
-        for (i in 0 until minOf(2, allPorts.size)) {
+        // Open default-probed devices
+        for (driver in defaultDrivers) {
+            if (connectedCount >= 2) break
+            matchedDeviceIds.add(driver.device.deviceId)
             try {
-                val (port, device) = allPorts[i]
-                
-                val connection = usbManager.openDevice(device)
-                if (connection == null) {
-                    toast("Failed to open device ${i+1} - no permission?")
-                    continue
-                }
-                
+                val connection = usbManager.openDevice(driver.device) ?: continue
+                val port = driver.ports[0]
                 port.open(connection)
                 port.setParameters(115200, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
                 
@@ -252,17 +228,75 @@ class MainActivity : AppCompatActivity() {
                     device1Enabled = true
                     findViewById<ToggleButton>(R.id.toggleDevice1).isEnabled = true
                     findViewById<ToggleButton>(R.id.toggleDevice1).isChecked = true
-                } else if (connectedCount == 1) {
+                } else {
                     port2 = port
                     device2Enabled = true
                     findViewById<ToggleButton>(R.id.toggleDevice2).isEnabled = true
                     findViewById<ToggleButton>(R.id.toggleDevice2).isChecked = true
                 }
-                
                 connectedCount++
-                toast("Connected ESP32 #$connectedCount")
+                toast("ESP32 #$connectedCount connected (auto)")
             } catch (e: Exception) {
-                toast("Error device ${i+1}: ${e.message}")
+                toast("Default driver failed: ${e.message}")
+            }
+        }
+        
+        // Then: for remaining USB devices, brute-force try every driver at open time
+        if (connectedCount < 2) {
+            val driverClasses = listOf(
+                CdcAcmSerialDriver::class.java,
+                Cp21xxSerialDriver::class.java,
+                Ch34xSerialDriver::class.java,
+                FtdiSerialDriver::class.java
+            )
+            
+            for (device in usbManager.deviceList.values) {
+                if (connectedCount >= 2) break
+                if (device.deviceId in matchedDeviceIds) continue
+                
+                val connection = usbManager.openDevice(device)
+                if (connection == null) {
+                    toast("No permission for VID=${device.vendorId}")
+                    continue
+                }
+                
+                var opened = false
+                for (driverClass in driverClasses) {
+                    try {
+                        val table = ProbeTable()
+                        table.addProduct(device.vendorId, device.productId, driverClass)
+                        val prober = UsbSerialProber(table)
+                        val drivers = prober.findAllDrivers(usbManager)
+                        if (drivers.isEmpty()) continue
+                        
+                        val port = drivers[0].ports[0]
+                        port.open(connection)
+                        port.setParameters(115200, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
+                        
+                        if (connectedCount == 0) {
+                            port1 = port
+                            device1Enabled = true
+                            findViewById<ToggleButton>(R.id.toggleDevice1).isEnabled = true
+                            findViewById<ToggleButton>(R.id.toggleDevice1).isChecked = true
+                        } else {
+                            port2 = port
+                            device2Enabled = true
+                            findViewById<ToggleButton>(R.id.toggleDevice2).isEnabled = true
+                            findViewById<ToggleButton>(R.id.toggleDevice2).isChecked = true
+                        }
+                        connectedCount++
+                        toast("ESP32 #$connectedCount via ${driverClass.simpleName}")
+                        opened = true
+                        break
+                    } catch (_: Exception) {
+                        // This driver type didn't work, try next
+                    }
+                }
+                
+                if (!opened) {
+                    connection.close()
+                    toast("No driver worked for VID=${device.vendorId} PID=${device.productId}")
+                }
             }
         }
         
