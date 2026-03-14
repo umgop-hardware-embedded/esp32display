@@ -1,0 +1,564 @@
+--------- beginning of main
+03-14 08:43:56.186  9330  9330 D CdcAcmSerialDriver: 12 01 00 02 EF 02 01 40 3A 30 01 10 01 01 01 02 03 01
+03-14 08:43:56.186  9330  9330 D CdcAcmSerialDriver: 09 02 62 00 03 01 00 C0 FA
+03-14 08:43:56.186  9330  9330 D CdcAcmSerialDriver: 08 0B 00 02 02 02 00 00
+03-14 08:43:56.186  9330  9330 D CdcAcmSerialDriver: 09 04 00 00 01 02 02 00 00
+03-14 08:43:56.186  9330  9330 D CdcAcmSerialDriver: 05 24 00 10 01
+03-14 08:43:56.186  9330  9330 D CdcAcmSerialDriver: 04 24 02 02
+03-14 08:43:56.186  9330  9330 D CdcAcmSerialDriver: 05 24 06 00 01
+03-14 08:43:56.186  9330  9330 D CdcAcmSerialDriver: 05 24 01 03 01
+03-14 08:43:56.186  9330  9330 D CdcAcmSerialDriver: 07 05 82 03 40 00 01
+03-14 08:43:56.186  9330  9330 D CdcAcmSerialDriver: 09 04 01 00 02 0A 02 00 00
+03-14 08:43:56.186  9330  9330 D CdcAcmSerialDriver: 07 05 01 02 40 00 01
+03-14 08:43:56.187  9330  9330 D CdcAcmSerialDriver: 07 05 81 02 40 00 01
+03-14 08:43:56.187  9330  9330 D CdcAcmSerialDriver: 09 04 02 00 02 FF FF 01 00
+03-14 08:43:56.187  9330  9330 D CdcAcmSerialDriver: 07 05 02 02 40 00 01
+03-14 08:43:56.187  9330  9330 D CdcAcmSerialDriver: 07 05 83 02 40 00 01
+03-14 08:43:56.187  9330  9330 D CdcAcmSerialDriver: interface count=3, IAD=0
+03-14 08:43:56.187  9330  9330 D CdcAcmSerialDriver: Control interface id 0
+03-14 08:43:56.187  9330  9330 D CdcAcmSerialDriver: data interface id 1
+03-14 08:43:56.188  9330  9330 D UsbRequestJNI: init
+03-14 08:43:56.197  9330  9330 D CdcAcmSerialDriver: interfaces:
+03-14 08:43:56.197  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=Topology Control,mClass=1,mSubclass=1,mProtocol=32,mEndpoints=[]
+03-14 08:43:56.197  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=Capture Inactive,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[]
+03-14 08:43:56.197  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=1,mName=Capture Active,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[
+03-14 08:43:56.197  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=13,mMaxPacketSize=512,mInterval=4]]
+03-14 08:43:56.197  9330  9330 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:43:56.201  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:43:56.218  9330  9330 I chatty  : uid=10110(com.example.emojisimpleapp) identical 2 lines
+03-14 08:43:56.228  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:43:56.265  1359  1875 I HeadwindMDM: Logs are uploaded
+03-14 08:43:56.280  1359  1875 I HeadwindMDM: Remote logger: unsent items: 0
+03-14 08:43:56.282  1359  1517 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=53d40a55-f635-4f2c-83e1-945f50b344fc, tags={ com.hmdm.launcher, com.hmdm.launcher.worker.RemoteLogWorker } ]
+--------- beginning of system
+03-14 08:43:56.511   491  1245 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+03-14 08:43:56.663   491   491 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@d4dddec
+--------- beginning of kernel
+03-14 08:43:57.195     0     0 I init    : Service 'vendor.ril-daemon' (pid 9544) exited with status 255
+03-14 08:43:57.195     0     0 I init    : Sending signal 9 to service 'vendor.ril-daemon' (pid 9544) process group...
+03-14 08:43:57.195   159   159 I hwservicemanager: getTransport: Cannot find entry android.hardware.radio@1.5::IRadio/slot1 in either framework or device manifest.
+03-14 08:43:57.196   159   159 I hwservicemanager: getTransport: Cannot find entry android.hardware.radio@1.4::IRadio/slot1 in either framework or device manifest.
+03-14 08:43:57.196     0     0 I libprocessgroup: Successfully killed process cgroup uid 1001 pid 9544 in 0ms
+03-14 08:43:57.197   159   159 I hwservicemanager: getTransport: Cannot find entry android.hardware.radio@1.3::IRadio/slot1 in either framework or device manifest.
+03-14 08:43:57.199     0     0 I init    : starting service 'vendor.ril-daemon'...
+03-14 08:43:57.199   159   159 I hwservicemanager: getTransport: Cannot find entry android.hardware.radio@1.2::IRadio/slot1 in either framework or device manifest.
+03-14 08:43:57.201   888   888 D HidlServiceManagement: getService: Trying again for android.hardware.radio@1.1::IRadio/slot1...
+03-14 08:43:57.214   491   511 W WindowManager: Unable to start animation, surface is null or no children.
+03-14 08:43:57.243   491   579 E WifiVendorHal: getWifiLinkLayerStats_1_3_Internal(l.973) failed {.code = ERROR_UNKNOWN, .description = unknown error}
+03-14 08:43:57.728   190   202 E BufferQueueProducer: [Toast#0](id:be000009ee,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:57.728   671  1110 W libEGL  : EGLNativeWindowType 0xb400007684855ff0 disconnect failed
+03-14 08:43:57.733     0     0 D logd    : Skipping 256 entries from slow reader, pid 7570, from LogBuffer::kickMe()
+03-14 08:43:57.742   491   505 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@e9d7cd
+03-14 08:43:57.774   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 512, alloc_width : 119, alloc_height : 49
+03-14 08:43:57.774   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:43:57.774   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 512, alloc_width : 119, alloc_height : 49
+03-14 08:43:57.775   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:43:57.775   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 512, alloc_width : 119, alloc_height : 49
+03-14 08:43:57.775   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:43:57.782   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 256, alloc_width : 49, alloc_height : 119
+03-14 08:43:57.782   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:43:57.837  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:43:57.797     0     0 I chatty  : uid=0(root) logd identical 8 lines
+03-14 08:43:57.797     0     0 D logd    : Skipping 256 entries from slow reader, pid 7570, from LogBuffer::kickMe()
+03-14 08:43:57.842     0     0 W cdc_acm : probe of 7-1.3:1.0 failed with error -16
+03-14 08:43:58.202   888   888 D HidlServiceManagement: getService: Trying again for android.hardware.radio@1.1::IRadio/slot1...
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: interfaces:
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=255,mEndpoints=[
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=131,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=2,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=2,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=133,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=132,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=3,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=3,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=135,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=134,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=4,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=4,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=255,mEndpoints=[
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=137,mAttributes=3,mMaxPacketSize=8,mInterval=9]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=136,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=5,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:43:58.362  9330  9330 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:43:58.365  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:43:58.368     0     0 I option1 ttyUSB0: GSM modem (1-port) converter now disconnected from ttyUSB0
+03-14 08:43:58.368     0     0 I option 1-1.6: 1.0: device disconnected
+03-14 08:43:58.369     0     0 I option 1-1.6: 1.0: GSM modem (1-port) converter detected
+03-14 08:43:58.370     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB0
+03-14 08:43:58.374     0     0 I option1 ttyUSB0: GSM modem (1-port) converter now disconnected from ttyUSB0
+03-14 08:43:58.374     0     0 I option 1-1.6: 1.0: device disconnected
+03-14 08:43:58.375     0     0 I option1 ttyUSB1: GSM modem (1-port) converter now disconnected from ttyUSB1
+03-14 08:43:58.375     0     0 I option 1-1.6: 1.1: device disconnected
+03-14 08:43:58.376     0     0 I option1 ttyUSB2: GSM modem (1-port) converter now disconnected from ttyUSB2
+03-14 08:43:58.376     0     0 I option 1-1.6: 1.2: device disconnected
+03-14 08:43:58.377     0     0 I option1 ttyUSB3: GSM modem (1-port) converter now disconnected from ttyUSB3
+03-14 08:43:58.377     0     0 I option 1-1.6: 1.3: device disconnected
+03-14 08:43:58.378     0     0 I option 1-1.6: 1.0: GSM modem (1-port) converter detected
+03-14 08:43:58.379     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB0
+03-14 08:43:58.379     0     0 I option 1-1.6: 1.1: GSM modem (1-port) converter detected
+03-14 08:43:58.380     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB1
+03-14 08:43:58.380     0     0 I option 1-1.6: 1.2: GSM modem (1-port) converter detected
+03-14 08:43:58.381     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB2
+03-14 08:43:58.381     0     0 I option 1-1.6: 1.3: GSM modem (1-port) converter detected
+03-14 08:43:58.382     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB3
+03-14 08:43:58.386     0     0 I option1 ttyUSB0: GSM modem (1-port) converter now disconnected from ttyUSB0
+03-14 08:43:58.387     0     0 I option 1-1.6: 1.0: device disconnected
+03-14 08:43:58.389     0     0 I option 1-1.6: 1.0: GSM modem (1-port) converter detected
+03-14 08:43:58.389     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB0
+03-14 08:43:58.394     0     0 I option1 ttyUSB0: GSM modem (1-port) converter now disconnected from ttyUSB0
+03-14 08:43:58.394     0     0 I option 1-1.6: 1.0: device disconnected
+03-14 08:43:58.385  9330  9330 I chatty  : uid=10110(com.example.emojisimpleapp) identical 2 lines
+03-14 08:43:58.392  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:43:58.396  9330  9330 D CdcAcmSerialDriver: interfaces:
+03-14 08:43:58.396  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=2,mSubclass=2,mProtocol=0,mEndpoints=[
+03-14 08:43:58.396  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=3,mMaxPacketSize=64,mInterval=1]]
+03-14 08:43:58.396  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=null,mClass=10,mSubclass=2,mProtocol=0,mEndpoints=[
+03-14 08:43:58.396  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=64,mInterval=1]
+03-14 08:43:58.396  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=64,mInterval=1]]
+03-14 08:43:58.396  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=2,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=1,mEndpoints=[
+03-14 08:43:58.396  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=2,mAttributes=2,mMaxPacketSize=64,mInterval=1]
+03-14 08:43:58.396  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=131,mAttributes=2,mMaxPacketSize=64,mInterval=1]]
+03-14 08:43:58.396  9330  9330 D CdcAcmSerialDriver: trying default interface logic
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: USB descriptor:
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 12 01 00 02 EF 02 01 40 3A 30 01 10 01 01 01 02 03 01
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 09 02 62 00 03 01 00 C0 FA
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 08 0B 00 02 02 02 00 00
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 09 04 00 00 01 02 02 00 00
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 05 24 00 10 01
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 04 24 02 02
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 05 24 06 00 01
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 05 24 01 03 01
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 07 05 82 03 40 00 01
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 09 04 01 00 02 0A 02 00 00
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 07 05 01 02 40 00 01
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 07 05 81 02 40 00 01
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 09 04 02 00 02 FF FF 01 00
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 07 05 02 02 40 00 01
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: 07 05 83 02 40 00 01
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: interface count=3, IAD=0
+03-14 08:43:58.397  9330  9330 D CdcAcmSerialDriver: Control interface id 0
+03-14 08:43:58.398  9330  9330 D CdcAcmSerialDriver: data interface id 1
+03-14 08:43:58.398  9330  9330 D UsbRequestJNI: init
+03-14 08:43:58.396     0     0 I option 1-1.6: 1.0: GSM modem (1-port) converter detected
+03-14 08:43:58.396     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB0
+03-14 08:43:58.407  9330  9330 D CdcAcmSerialDriver: interfaces:
+03-14 08:43:58.407  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=Topology Control,mClass=1,mSubclass=1,mProtocol=32,mEndpoints=[]
+03-14 08:43:58.408  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=Capture Inactive,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[]
+03-14 08:43:58.408  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=1,mName=Capture Active,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[
+03-14 08:43:58.408  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=13,mMaxPacketSize=512,mInterval=4]]
+03-14 08:43:58.408  9330  9330 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:43:58.413  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:43:58.673   491   491 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@5347ef0
+03-14 08:43:58.427  9330  9330 I chatty  : uid=10110(com.example.emojisimpleapp) identical 2 lines
+03-14 08:43:58.433  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:43:58.792  1743  1802 D MService: Checker====Running...(0天 1小时 1分钟 42秒)
+03-14 08:43:59.202   888   888 D HidlServiceManagement: getService: Trying again for android.hardware.radio@1.1::IRadio/slot1...
+03-14 08:43:59.247   491   511 W WindowManager: Unable to start animation, surface is null or no children.
+03-14 08:43:59.484  1282  2511 I AutoxingAdapter: onStateChanged: {"isTasking":false,"robotSignal":"none","stuckState":"none","isManualMode":false,"moveState":"idle","ori":314,"isCharging":true,"isRemoteMode":false,"jackProgress":0.0,"robotId":"6152506b05957y5","battery":48.0,"speed":0.0,"yaw":-0.8,"duration":0,"areaId":"69118b4513e86cdef4877f54","x":-0.4,"isEmergencyStop":true,"y":0.1,"locQuality":100.0,"hasObstruction":false,"isGoHome":false,"timestamp":1773449040440,"mileage":0.0}
+03-14 08:43:59.485  1282  2511 W OpenTelemetryUtils: Logs uploading finished
+03-14 08:43:59.655  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:43:59.659     0     0 W cdc_acm : probe of 7-1.3:1.0 failed with error -16
+03-14 08:43:59.738   190   638 E BufferQueueProducer: [Toast#1](id:be000009ef,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:59.738   671  1110 W libEGL  : EGLNativeWindowType 0xb400007684855ff0 disconnect failed
+03-14 08:43:59.743   491   505 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@dc3af73
+03-14 08:43:59.774   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 640, alloc_width : 145, alloc_height : 49
+03-14 08:43:59.774   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:43:59.775   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 640, alloc_width : 145, alloc_height : 49
+03-14 08:43:59.775   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:43:59.775   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 640, alloc_width : 145, alloc_height : 49
+03-14 08:43:59.775   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:43:59.776   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 256, alloc_width : 49, alloc_height : 145
+03-14 08:43:59.776   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:43:59.951     0     0 E sdio_err: <aicwf_sdio_hal_irqhandler,1637>: Interrupt but no data
+03-14 08:44:00.003   671   671 D KeyguardClockSwitch: Updating clock: 0844
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: interfaces:
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=255,mEndpoints=[
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=131,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=2,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=2,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=133,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=132,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=3,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=3,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=135,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=134,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:44:00.182  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=4,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:44:00.183  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=4,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=255,mEndpoints=[
+03-14 08:44:00.183  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=137,mAttributes=3,mMaxPacketSize=8,mInterval=9]
+03-14 08:44:00.183  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=136,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:44:00.183  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=5,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:44:00.183  9330  9330 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:44:00.186  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:00.188     0     0 I option1 ttyUSB0: GSM modem (1-port) converter now disconnected from ttyUSB0
+03-14 08:44:00.188     0     0 I option 1-1.6: 1.0: device disconnected
+03-14 08:44:00.189     0     0 I option 1-1.6: 1.0: GSM modem (1-port) converter detected
+03-14 08:44:00.190     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB0
+03-14 08:44:00.195     0     0 I option1 ttyUSB0: GSM modem (1-port) converter now disconnected from ttyUSB0
+03-14 08:44:00.195     0     0 I option 1-1.6: 1.0: device disconnected
+03-14 08:44:00.196     0     0 I option1 ttyUSB1: GSM modem (1-port) converter now disconnected from ttyUSB1
+03-14 08:44:00.196     0     0 I option 1-1.6: 1.1: device disconnected
+03-14 08:44:00.196     0     0 I option1 ttyUSB2: GSM modem (1-port) converter now disconnected from ttyUSB2
+03-14 08:44:00.196     0     0 I option 1-1.6: 1.2: device disconnected
+03-14 08:44:00.197     0     0 I option1 ttyUSB3: GSM modem (1-port) converter now disconnected from ttyUSB3
+03-14 08:44:00.197     0     0 I option 1-1.6: 1.3: device disconnected
+03-14 08:44:00.198     0     0 I option 1-1.6: 1.0: GSM modem (1-port) converter detected
+03-14 08:44:00.200     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB0
+03-14 08:44:00.200     0     0 I option 1-1.6: 1.1: GSM modem (1-port) converter detected
+03-14 08:44:00.201     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB1
+03-14 08:44:00.201     0     0 I option 1-1.6: 1.2: GSM modem (1-port) converter detected
+03-14 08:44:00.202     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB2
+03-14 08:44:00.202     0     0 I option 1-1.6: 1.3: GSM modem (1-port) converter detected
+03-14 08:44:00.202     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB3
+03-14 08:44:00.206     0     0 I option1 ttyUSB0: GSM modem (1-port) converter now disconnected from ttyUSB0
+03-14 08:44:00.206     0     0 I option 1-1.6: 1.0: device disconnected
+03-14 08:44:00.208     0     0 I option 1-1.6: 1.0: GSM modem (1-port) converter detected
+03-14 08:44:00.209     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB0
+03-14 08:44:00.213     0     0 I option1 ttyUSB0: GSM modem (1-port) converter now disconnected from ttyUSB0
+03-14 08:44:00.213     0     0 I option 1-1.6: 1.0: device disconnected
+03-14 08:44:00.214     0     0 I option 1-1.6: 1.0: GSM modem (1-port) converter detected
+03-14 08:44:00.214     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB0
+03-14 08:44:00.198  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:00.203   888   888 D HidlServiceManagement: getService: Trying again for android.hardware.radio@1.1::IRadio/slot1...
+03-14 08:44:00.204  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:00.210  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: interfaces:
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=2,mSubclass=2,mProtocol=0,mEndpoints=[
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=3,mMaxPacketSize=64,mInterval=1]]
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=null,mClass=10,mSubclass=2,mProtocol=0,mEndpoints=[
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=64,mInterval=1]
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=64,mInterval=1]]
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=2,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=1,mEndpoints=[
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=2,mAttributes=2,mMaxPacketSize=64,mInterval=1]
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=131,mAttributes=2,mMaxPacketSize=64,mInterval=1]]
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: trying default interface logic
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: USB descriptor:
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: 12 01 00 02 EF 02 01 40 3A 30 01 10 01 01 01 02 03 01
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: 09 02 62 00 03 01 00 C0 FA
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: 08 0B 00 02 02 02 00 00
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: 09 04 00 00 01 02 02 00 00
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: 05 24 00 10 01
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: 04 24 02 02
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: 05 24 06 00 01
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: 05 24 01 03 01
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: 07 05 82 03 40 00 01
+03-14 08:44:00.214  9330  9330 D CdcAcmSerialDriver: 09 04 01 00 02 0A 02 00 00
+03-14 08:44:00.215  9330  9330 D CdcAcmSerialDriver: 07 05 01 02 40 00 01
+03-14 08:44:00.215  9330  9330 D CdcAcmSerialDriver: 07 05 81 02 40 00 01
+03-14 08:44:00.215  9330  9330 D CdcAcmSerialDriver: 09 04 02 00 02 FF FF 01 00
+03-14 08:44:00.215  9330  9330 D CdcAcmSerialDriver: 07 05 02 02 40 00 01
+03-14 08:44:00.215  9330  9330 D CdcAcmSerialDriver: 07 05 83 02 40 00 01
+03-14 08:44:00.215  9330  9330 D CdcAcmSerialDriver: interface count=3, IAD=0
+03-14 08:44:00.215  9330  9330 D CdcAcmSerialDriver: Control interface id 0
+03-14 08:44:00.215  9330  9330 D CdcAcmSerialDriver: data interface id 1
+03-14 08:44:00.215  9330  9330 D UsbRequestJNI: init
+03-14 08:44:00.223  9572  9572 I Thread-5: type=1400 audit(0.0:3458): avc: denied { execute } for name="su" dev="dm-0" ino=3901 scontext=u:r:untrusted_app_29:s0:c124,c256,c512,c768 tcontext=u:object_r:su_exec:s0 tclass=file permissive=1 app=com.autoxing.factory.service
+03-14 08:44:00.223  9572  9572 I Thread-5: type=1400 audit(0.0:3459): avc: denied { read open } for path="/system/xbin/su" dev="overlay" ino=38950 scontext=u:r:untrusted_app_29:s0:c124,c256,c512,c768 tcontext=u:object_r:su_exec:s0 tclass=file permissive=1 app=com.autoxing.factory.service
+03-14 08:44:00.225  9330  9330 D CdcAcmSerialDriver: interfaces:
+03-14 08:44:00.225  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=Topology Control,mClass=1,mSubclass=1,mProtocol=32,mEndpoints=[]
+03-14 08:44:00.225  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=Capture Inactive,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[]
+03-14 08:44:00.225  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=1,mName=Capture Active,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[
+03-14 08:44:00.225  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=13,mMaxPacketSize=512,mInterval=4]]
+03-14 08:44:00.226  9330  9330 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:44:00.230  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:00.239  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:00.223  9572  9572 I Thread-5: type=1400 audit(0.0:3460): avc: denied { execute_no_trans } for path="/system/xbin/su" dev="overlay" ino=38950 scontext=u:r:untrusted_app_29:s0:c124,c256,c512,c768 tcontext=u:object_r:su_exec:s0 tclass=file permissive=1 app=com.autoxing.factory.service
+03-14 08:44:00.223  9572  9572 I su      : type=1400 audit(0.0:3461): avc: denied { map } for path="/system/xbin/su" dev="overlay" ino=38950 scontext=u:r:untrusted_app_29:s0:c124,c256,c512,c768 tcontext=u:object_r:su_exec:s0 tclass=file permissive=1 app=com.autoxing.factory.service
+03-14 08:44:00.227  9572  9572 I su      : type=1400 audit(0.0:3462): avc: denied { getattr } for path="/system/xbin/su" dev="overlay" ino=38950 scontext=u:r:untrusted_app_29:s0:c124,c256,c512,c768 tcontext=u:object_r:su_exec:s0 tclass=file permissive=1 app=com.autoxing.factory.service
+03-14 08:44:00.255     0     0 E sdio_err: <aicwf_sdio_hal_irqhandler,1637>: Interrupt but no data
+03-14 08:44:00.240  9572  9572 I su      : type=1400 audit(0.0:3463): avc: denied { setgid } for capability=6 scontext=u:r:untrusted_app_29:s0:c124,c256,c512,c768 tcontext=u:r:untrusted_app_29:s0:c124,c256,c512,c768 tclass=capability permissive=1 app=com.autoxing.factory.service
+03-14 08:44:00.243  9572  9572 I su      : type=1400 audit(0.0:3464): avc: denied { setuid } for capability=7 scontext=u:r:untrusted_app_29:s0:c124,c256,c512,c768 tcontext=u:r:untrusted_app_29:s0:c124,c256,c512,c768 tclass=capability permissive=1 app=com.autoxing.factory.service
+03-14 08:44:00.248   491   579 E WifiVendorHal: getWifiLinkLayerStats_1_3_Internal(l.973) failed {.code = ERROR_UNKNOWN, .description = unknown error}
+03-14 08:44:00.254  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:00.260  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:00.280  1743  2002 D Monitor : Checker====receive=0 transmit=0 times=62
+03-14 08:44:00.387  1743  2002 D Monitor : Checker====checkSystemInfo CPU usage normal
+03-14 08:44:00.407  9579  9579 I sh      : type=1400 audit(0.0:3465): avc: denied { read } for name="thermal" dev="sysfs" ino=12789 scontext=u:r:untrusted_app_29:s0:c124,c256,c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=1
+03-14 08:44:00.407  9579  9579 I sh      : type=1400 audit(0.0:3466): avc: denied { open } for path="/sys/class/thermal" dev="sysfs" ino=12789 scontext=u:r:untrusted_app_29:s0:c124,c256,c512,c768 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=1
+03-14 08:44:00.415     0     0 W audit   : audit_lost=1549 audit_rate_limit=5 audit_backlog_limit=64
+03-14 08:44:00.415     0     0 E audit   : rate limit exceeded
+03-14 08:44:00.444  1743  2002 D Monitor : Checker====checkSystemInfo Kernel temperature normal
+03-14 08:44:00.488   888  1102 E PhoneInterfaceManager: [PhoneIntfMgr] getIccId: No UICC
+03-14 08:44:00.496  1743  2002 D Monitor : Checker====checkSystemInfo SimIccid is empty
+03-14 08:44:00.551  1743  2002 D Monitor : Checker====checkSystemInfo USB device normal
+03-14 08:44:00.611  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:00.616     0     0 W cdc_acm : probe of 7-1.3:1.0 failed with error -16
+03-14 08:44:00.658  9591  9593 I cmd     : oneway function results will be dropped but finished with status OK and parcel size 4
+03-14 08:44:00.664  1743  2002 D Monitor : Checker====checkBusinessApp Business apps normal
+03-14 08:44:00.681   491   491 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@d8a278f
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: interfaces:
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=255,mEndpoints=[
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=131,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=2,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=2,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=133,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=132,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=3,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:44:01.145     0     0 I option1 ttyUSB0: GSM modem (1-port) converter now disconnected from ttyUSB0
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=3,mAlternateSetting=0,mName=null,mClass=255,mSubclass=0,mProtocol=0,mEndpoints=[
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=135,mAttributes=3,mMaxPacketSize=10,mInterval=9]
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=134,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=4,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:44:01.145     0     0 I option 1-1.6: 1.0: device disconnected
+03-14 08:44:01.146     0     0 I option 1-1.6: 1.0: GSM modem (1-port) converter detected
+03-14 08:44:01.149     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB0
+03-14 08:44:01.153     0     0 I option1 ttyUSB0: GSM modem (1-port) converter now disconnected from ttyUSB0
+03-14 08:44:01.153     0     0 I option 1-1.6: 1.0: device disconnected
+03-14 08:44:01.154     0     0 I option1 ttyUSB1: GSM modem (1-port) converter now disconnected from ttyUSB1
+03-14 08:44:01.154     0     0 I option 1-1.6: 1.1: device disconnected
+03-14 08:44:01.155     0     0 I option1 ttyUSB2: GSM modem (1-port) converter now disconnected from ttyUSB2
+03-14 08:44:01.155     0     0 I option 1-1.6: 1.2: device disconnected
+03-14 08:44:01.155     0     0 I option1 ttyUSB3: GSM modem (1-port) converter now disconnected from ttyUSB3
+03-14 08:44:01.156     0     0 I option 1-1.6: 1.3: device disconnected
+03-14 08:44:01.157     0     0 I option 1-1.6: 1.0: GSM modem (1-port) converter detected
+03-14 08:44:01.157     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB0
+03-14 08:44:01.158     0     0 I option 1-1.6: 1.1: GSM modem (1-port) converter detected
+03-14 08:44:01.158     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB1
+03-14 08:44:01.159     0     0 I option 1-1.6: 1.2: GSM modem (1-port) converter detected
+03-14 08:44:01.159     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB2
+03-14 08:44:01.160     0     0 I option 1-1.6: 1.3: GSM modem (1-port) converter detected
+03-14 08:44:01.160     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB3
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=4,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=255,mEndpoints=[
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=137,mAttributes=3,mMaxPacketSize=8,mInterval=9]
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=136,mAttributes=2,mMaxPacketSize=512,mInterval=0]
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=5,mAttributes=2,mMaxPacketSize=512,mInterval=0]]
+03-14 08:44:01.139  9330  9330 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:44:01.144  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:01.164     0     0 I option1 ttyUSB0: GSM modem (1-port) converter now disconnected from ttyUSB0
+03-14 08:44:01.165     0     0 I option 1-1.6: 1.0: device disconnected
+03-14 08:44:01.167     0     0 I option 1-1.6: 1.0: GSM modem (1-port) converter detected
+03-14 08:44:01.167     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB0
+03-14 08:44:01.171     0     0 I option1 ttyUSB0: GSM modem (1-port) converter now disconnected from ttyUSB0
+03-14 08:44:01.172     0     0 I option 1-1.6: 1.0: device disconnected
+03-14 08:44:01.173     0     0 I option 1-1.6: 1.0: GSM modem (1-port) converter detected
+03-14 08:44:01.174     0     0 I usb 1-1.6: GSM modem (1-port) converter now attached to ttyUSB0
+03-14 08:44:01.163  9330  9330 I chatty  : uid=10110(com.example.emojisimpleapp) identical 2 lines
+03-14 08:44:01.169  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:01.173  9330  9330 D CdcAcmSerialDriver: interfaces:
+03-14 08:44:01.173  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=null,mClass=2,mSubclass=2,mProtocol=0,mEndpoints=[
+03-14 08:44:01.173  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=130,mAttributes=3,mMaxPacketSize=64,mInterval=1]]
+03-14 08:44:01.173  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=null,mClass=10,mSubclass=2,mProtocol=0,mEndpoints=[
+03-14 08:44:01.173  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=1,mAttributes=2,mMaxPacketSize=64,mInterval=1]
+03-14 08:44:01.173  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=2,mMaxPacketSize=64,mInterval=1]]
+03-14 08:44:01.173  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=2,mAlternateSetting=0,mName=null,mClass=255,mSubclass=255,mProtocol=1,mEndpoints=[
+03-14 08:44:01.173  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=2,mAttributes=2,mMaxPacketSize=64,mInterval=1]
+03-14 08:44:01.173  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=131,mAttributes=2,mMaxPacketSize=64,mInterval=1]]
+03-14 08:44:01.173  9330  9330 D CdcAcmSerialDriver: trying default interface logic
+03-14 08:44:01.173  9330  9330 D CdcAcmSerialDriver: USB descriptor:
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 12 01 00 02 EF 02 01 40 3A 30 01 10 01 01 01 02 03 01
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 09 02 62 00 03 01 00 C0 FA
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 08 0B 00 02 02 02 00 00
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 09 04 00 00 01 02 02 00 00
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 05 24 00 10 01
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 04 24 02 02
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 05 24 06 00 01
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 05 24 01 03 01
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 07 05 82 03 40 00 01
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 09 04 01 00 02 0A 02 00 00
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 07 05 01 02 40 00 01
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 07 05 81 02 40 00 01
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 09 04 02 00 02 FF FF 01 00
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 07 05 02 02 40 00 01
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: 07 05 83 02 40 00 01
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: interface count=3, IAD=0
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: Control interface id 0
+03-14 08:44:01.174  9330  9330 D CdcAcmSerialDriver: data interface id 1
+03-14 08:44:01.174  9330  9330 D UsbRequestJNI: init
+03-14 08:44:01.182  9330  9330 D CdcAcmSerialDriver: interfaces:
+03-14 08:44:01.183  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=0,mAlternateSetting=0,mName=Topology Control,mClass=1,mSubclass=1,mProtocol=32,mEndpoints=[]
+03-14 08:44:01.183  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=0,mName=Capture Inactive,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[]
+03-14 08:44:01.183  9330  9330 D CdcAcmSerialDriver: UsbInterface[mId=1,mAlternateSetting=1,mName=Capture Active,mClass=1,mSubclass=2,mProtocol=32,mEndpoints=[
+03-14 08:44:01.183  9330  9330 D CdcAcmSerialDriver: UsbEndpoint[mAddress=129,mAttributes=13,mMaxPacketSize=512,mInterval=4]]
+03-14 08:44:01.183  9330  9330 D CdcAcmSerialDriver: device might be castrated ACM device, trying single interface logic
+03-14 08:44:01.186  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:01.194  9330  9330 I chatty  : uid=10110(com.example.emojisimpleapp) identical 1 line
+03-14 08:44:01.202  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:01.204   888   888 D HidlServiceManagement: getService: Trying again for android.hardware.radio@1.1::IRadio/slot1...
+03-14 08:44:01.208  9330  9330 D UsbDeviceConnectionJNI: close
+03-14 08:44:01.251   491   511 W WindowManager: Unable to start animation, surface is null or no children.
+03-14 08:44:01.757   190   202 E BufferQueueProducer: [Toast#0](id:be000009f0,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:44:01.757   671  1110 W libEGL  : EGLNativeWindowType 0xb400007684855ff0 disconnect failed
+03-14 08:44:01.767   491   505 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@e8cf1c0
+03-14 08:44:01.792  1743  1802 D MService: Checker====Running...(0天 1小时 1分钟 45秒)
+03-14 08:44:01.805   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 768, alloc_width : 185, alloc_height : 49
+03-14 08:44:01.805   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:01.805   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 768, alloc_width : 185, alloc_height : 49
+03-14 08:44:01.805   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:01.806   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 768, alloc_width : 185, alloc_height : 49
+03-14 08:44:01.806   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:01.807   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 256, alloc_width : 49, alloc_height : 185
+03-14 08:44:01.807   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:02.206   888   888 D HidlServiceManagement: getService: Trying again for android.hardware.radio@1.1::IRadio/slot1...
+03-14 08:44:02.237  9565  9565 I rild    : type=1400 audit(0.0:3474): avc: denied { read } for name="/" dev="tmpfs" ino=2622 scontext=u:r:rild:s0 tcontext=u:object_r:apex_mnt_dir:s0 tclass=dir permissive=1
+03-14 08:44:02.237  9565  9565 I rild    : type=1400 audit(0.0:3475): avc: denied { open } for path="/apex" dev="tmpfs" ino=2622 scontext=u:r:rild:s0 tcontext=u:object_r:apex_mnt_dir:s0 tclass=dir permissive=1
+03-14 08:44:02.242  9565  9565 I HidlServiceManagement: Registered android.hardware.radio@1.1::IRadio/slot1
+03-14 08:44:02.244  9565  9565 I HidlServiceManagement: Registered android.hardware.radio.deprecated@1.0::IOemHook/slot1
+03-14 08:44:02.245  9565  9565 I HidlServiceManagement: Registered android.hardware.radio@1.1::ISap/slot1
+03-14 08:44:02.245   159   159 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+03-14 08:44:02.245   888   888 I android_os_HwBinder: HwBinder: Starting thread pool for getting: android.hardware.radio@1.1::IRadio/slot1
+03-14 08:44:02.250   888   888 I android_os_HwBinder: HwBinder: Starting thread pool for getting: android.hardware.radio.deprecated@1.0::IOemHook/slot1
+03-14 08:44:02.689   491   491 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@58badab
+03-14 08:44:03.257   491   511 W WindowManager: Unable to start animation, surface is null or no children.
+03-14 08:44:03.259   491   579 E WifiVendorHal: getWifiLinkLayerStats_1_3_Internal(l.973) failed {.code = ERROR_UNKNOWN, .description = unknown error}
+03-14 08:44:03.267  9565  9565 I rild    : type=1400 audit(0.0:3476): avc: denied { read write } for name="ttyUSB2" dev="tmpfs" ino=165453 scontext=u:r:rild:s0 tcontext=u:object_r:usb_serial_device:s0 tclass=chr_file permissive=1
+03-14 08:44:03.273     0     0 D logd    : Skipping 256 entries from slow reader, pid 7570, from LogBuffer::kickMe()
+03-14 08:44:03.267  9565  9565 I rild    : type=1400 audit(0.0:3477): avc: denied { open } for path="/dev/ttyUSB2" dev="tmpfs" ino=165453 scontext=u:r:rild:s0 tcontext=u:object_r:usb_serial_device:s0 tclass=chr_file permissive=1
+03-14 08:44:03.270  9565  9565 I rild    : type=1400 audit(0.0:3478): avc: denied { ioctl } for path="/dev/ttyUSB2" dev="tmpfs" ino=165453 ioctlcmd=0x5401 scontext=u:r:rild:s0 tcontext=u:object_r:usb_serial_device:s0 tclass=chr_file permissive=1
+03-14 08:44:03.770   190  1001 E BufferQueueProducer: [Toast#1](id:be000009f1,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:44:03.771   671  1110 W libEGL  : EGLNativeWindowType 0xb400007684855ff0 disconnect failed
+03-14 08:44:03.779   491  8992 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@4a04af0
+03-14 08:44:03.815   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 512, alloc_width : 119, alloc_height : 49
+03-14 08:44:03.815   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:03.816   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 512, alloc_width : 119, alloc_height : 49
+03-14 08:44:03.816   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:03.816   223   223 D gralloc4: plane_info[0]: offset : 0, byte_stride : 256, alloc_width : 49, alloc_height : 119
+03-14 08:44:03.816   223   223 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:03.817   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 512, alloc_width : 119, alloc_height : 49
+03-14 08:44:03.817   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:04.497   491  3593 D TelephonyRegistryManager: onSubscriptionsChangedListener callback received.
+03-14 08:44:04.497   491  3593 I chatty  : uid=1000(system) Binder:491_10 identical 1 line
+03-14 08:44:04.498   491  3593 D TelephonyRegistryManager: onSubscriptionsChangedListener callback received.
+03-14 08:44:04.498   671  7396 D TelephonyRegistryManager: onSubscriptionsChangedListener callback received.
+03-14 08:44:04.498   888   907 D TelephonyRegistryManager: onSubscriptionsChangedListener callback received.
+03-14 08:44:04.498   888  1081 D TelephonyRegistryManager: onSubscriptionsChangedListener callback received.
+03-14 08:44:04.498   671  7396 D TelephonyRegistryManager: onSubscriptionsChangedListener callback received.
+03-14 08:44:04.498   888  1108 D TelephonyRegistryManager: onSubscriptionsChangedListener callback received.
+03-14 08:44:04.499   888  2738 D TelephonyRegistryManager: onSubscriptionsChangedListener callback received.
+03-14 08:44:04.499   888  4353 D TelephonyRegistryManager: onSubscriptionsChangedListener callback received.
+03-14 08:44:04.499   671   671 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+03-14 08:44:04.499   888  4431 D TelephonyRegistryManager: onSubscriptionsChangedListener callback received.
+03-14 08:44:04.499   914  9104 D TelephonyRegistryManager: onSubscriptionsChangedListener callback received.
+03-14 08:44:04.501   888  1102 D TelephonyRegistryManager: onSubscriptionsChangedListener callback received.
+03-14 08:44:04.505   888   888 D MultiSimSettingController: notifySubscriptionInfoChanged
+03-14 08:44:04.506   888   888 D IntentBroadcaster: Broadcasting and adding intent for rebroadcast: android.intent.action.SIM_STATE_CHANGED ABSENT for phoneId 0
+03-14 08:44:04.510   671   671 V KeyguardUpdateMonitor: action android.intent.action.SIM_STATE_CHANGED state: ABSENT slotId: 0 subid: -1
+03-14 08:44:04.511   671   671 D KeyguardUpdateMonitor: handleSimStateChange(subId=-1, slotId=0, state=1)
+03-14 08:44:04.511   671   671 W KeyguardUpdateMonitor: invalid subId in handleSimStateChange()
+03-14 08:44:04.511   671   671 D KeyguardViewMediator: onSimStateChanged(subId=-1, slotId=0,state=1)
+03-14 08:44:04.512   491   491 D WifiService: resetting networks because SIM was removed
+03-14 08:44:04.512   491   579 D WifiClientModeImpl: resetting EAP-SIM/AKA/AKA' networks since SIM was changed
+03-14 08:44:04.513   491   579 W WifiNetworkSuggestionsManager: SIM state is changed!
+03-14 08:44:04.514   888   888 D CarrierConfigLoader: Update config for phoneId: 0 simState: ABSENT
+03-14 08:44:04.515   888   888 D CarrierSvcBindHelper: update binding for phoneId: 0 simState: ABSENT
+03-14 08:44:04.527   671   671 W KeyguardUpdateMonitor: invalid subId in handleServiceStateChange()
+03-14 08:44:04.540   888   888 D ServiceStateProvider: subId=-1
+03-14 08:44:04.541   671   671 W KeyguardUpdateMonitor: invalid subId in handleServiceStateChange()
+03-14 08:44:04.546   888   888 I Telephony: TelecomAccountRegistry: onSubscriptionsChanged - update accounts
+03-14 08:44:04.546   888   888 I Telephony: PstnIncomingCallNotifier: Unregistering: Handler (com.android.internal.telephony.GsmCdmaPhone) {cfadcc}
+03-14 08:44:04.546   888   888 D Telephony: Unregistering: Handler (com.android.internal.telephony.GsmCdmaPhone) {cfadcc}
+03-14 08:44:04.546   888   888 I Telephony: TelecomAccountRegistry: setupAccounts: Found 1 phones.  Attempting to register.
+03-14 08:44:04.546   888   888 I Telephony: TelecomAccountRegistry: setupAccounts: Phone with subscription id -1
+03-14 08:44:04.547   888   888 D Telephony: TelecomAccountRegistry: setupAccounts: skipping invalid subid -1
+03-14 08:44:04.547   888   888 I Telephony: setupAccounts: adding default
+03-14 08:44:04.549   888   888 E PhoneInterfaceManager: [PhoneIntfMgr] getIccId: No UICC
+03-14 08:44:04.549   888   888 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
+03-14 08:44:04.550   888   888 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
+03-14 08:44:04.550   888   888 I Telephony: isRttCurrentlySupported -- emergency acct and no device support
+03-14 08:44:04.554   491   505 W Telecom : : registerPhoneAccount not allowed on non-voice capable device.: TSI.rPA@ArE
+03-14 08:44:04.554   888   888 I Telephony: AccountEntry: Registered phoneAccount: [[ ] PhoneAccount: ComponentInfo{com.android.phone/com.android.services.telephony.TelephonyConnectionService}, ***, UserHandle{0} Capabilities: CallProvider MultiUser PlaceEmerg SimSub  Audio Routes: BESW Schemes: tel voicemail  Extras: Bundle[{android.telecom.extra.SUPPORTS_VIDEO_CALLING_FALLBACK=true}] GroupId: ***] with handle: ComponentInfo{com.android.phone/com.android.services.telephony.TelephonyConnectionService}, ***, UserHandle{0}
+03-14 08:44:04.555   888   888 I Telephony: PstnIncomingCallNotifier: Registering: Handler (com.android.internal.telephony.GsmCdmaPhone) {cfadcc}
+03-14 08:44:04.555   888   888 D Telephony: Registering: Handler (com.android.internal.telephony.GsmCdmaPhone) {cfadcc}
+03-14 08:44:04.558   888   888 D MultiSimSettingController: onSubscriptionsChanged
+03-14 08:44:04.558   888   888 D MultiSimSettingController: updateDefaults
+03-14 08:44:04.559   888   888 D MultiSimSettingController: [updateDefaultValues] No active sub. Setting default to INVALID sub.
+03-14 08:44:04.564   671   671 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+03-14 08:44:04.570   491   579 D WifiConfigStore: Writing to stores completed in 49 ms.
+03-14 08:44:04.576   888   888 I VvmSimStateTracker: android.intent.action.SIM_STATE_CHANGED
+03-14 08:44:04.577   888   888 D CarrierConfigLoader: mHandler: 0 phoneId: 0
+03-14 08:44:04.577   888   888 D CarrierSvcBindHelper: mHandler: 0
+03-14 08:44:04.577   888   888 D CarrierSvcBindHelper: Rebinding if necessary for phoneId: 0
+03-14 08:44:04.579   888   888 E PhoneInterfaceManager: [PhoneIntfMgr] getCarrierPackageNamesForIntentAndPhone: No UICC
+03-14 08:44:04.579   888   888 D CarrierSvcBindHelper: No carrier app for: 0
+03-14 08:44:04.581   888  1107 E PhoneInterfaceManager: [PhoneIntfMgr] getIccId: No UICC
+03-14 08:44:04.582   888   888 W PhoneGlobals: Can't get phone with sub id = -1
+03-14 08:44:04.583   888   888 W PhoneGlobals: Can't get phone with sub id = -1
+03-14 08:44:04.583  1359  1359 I HeadwindMDM: SIM card removed
+03-14 08:44:04.584   888   888 I Telephony: handleVideoCapabilitesChanged. Video capability - false
+03-14 08:44:04.585   888   888 E PhoneInterfaceManager: [PhoneIntfMgr] getIccId: No UICC
+03-14 08:44:04.585   888   888 D Telephony: isEmergencyPreferredAccount: subId=-1, activeData=-1
+03-14 08:44:04.586   888   888 D Telephony: isEmergencyPreferredAccount: Device does not require preference.
+03-14 08:44:04.586   888   888 I Telephony: isRttCurrentlySupported -- emergency acct and no device support
+03-14 08:44:04.591   491   505 W Telecom : : registerPhoneAccount not allowed on non-voice capable device.: TSI.rPA@ArQ
+03-14 08:44:04.592   888   888 D MultiSimSettingController: onDefaultDataSettingChanged
+03-14 08:44:04.598  1359  1359 I HeadwindMDM: RemoteLogWorker scheduled
+03-14 08:44:04.607  4387  4387 D CarrierDefaultBroadcastReceiver: onReceive intent: com.android.internal.telephony.CARRIER_SIGNAL_RESET
+03-14 08:44:04.611  4387  4387 D CarrierDefaultBroadcastReceiver: apply carrier action idx: 6
+03-14 08:44:04.611  4387  4387 D CarrierActionUtils: onCancelAllNotifications
+03-14 08:44:04.613  4387  4387 D CarrierDefaultBroadcastReceiver: apply carrier action idx: 8
+03-14 08:44:04.613  4387  4387 D CarrierActionUtils: onDisableDefaultURLHandler
+03-14 08:44:04.614   888   888 D TelephonyProvider: subIdString = -1 subId = -1
+03-14 08:44:04.615   888   888 D TelephonyProvider: getPreferredApnIdFromApn: for subId -1
+03-14 08:44:04.622   888   888 D TelephonyProvider: subIdString = -1 subId = -1
+03-14 08:44:04.623   888   888 D TelephonyProvider: subIdString = -1 subId = -1
+03-14 08:44:04.623   888   888 D TelephonyProvider: getPreferredApnIdFromApn: for subId -1
+03-14 08:44:04.628   888   888 D CarrierConfigLoader: mHandler: 18 phoneId: 0
+03-14 08:44:04.629   888   888 D CarrierConfigLoader: File not found: /data/user_de/0/com.android.phone/files/carrierconfig-com.android.carrierconfig-nosim.xml
+03-14 08:44:04.629   888   888 D CarrierConfigLoader: Binding to com.android.carrierconfig for phone 0
+03-14 08:44:04.635   888   888 D CarrierConfigLoader: Connected to config app: com.android.carrierconfig/.DefaultCarrierConfigService
+03-14 08:44:04.635   888   888 D CarrierConfigLoader: mHandler: 20 phoneId: 0
+03-14 08:44:04.635   888   888 D CarrierConfigLoader: Fetch no sim config from default app: com.android.carrierconfig
+03-14 08:44:04.635  4328  4349 D DefaultCarrierConfigService: Config being fetched
+03-14 08:44:04.648  1359  1877 I HeadwindMDM: Remote logger: unsent items: 1
+03-14 08:44:04.648   888   888 D CarrierConfigLoader: mHandler: 19 phoneId: 0
+03-14 08:44:04.652   888   888 D CarrierConfigLoader: Broadcast CARRIER_CONFIG_CHANGED for phone 0
+03-14 08:44:04.656   491   491 D WifiService: ACTION_CARRIER_CONFIG_CHANGED, active subId: -1
+03-14 08:44:04.665   491   491 I Telecom : PhoneAccountRegistrar: getSimCallManager: SimCallManager for subId -1 queried, returning: null: TSI.gSCMFU@ArU
+03-14 08:44:04.671   888   888 W PhoneGlobals: Can't get phone with sub id = -1
+03-14 08:44:04.672   888   888 I Telephony: Carrier-config changed, checking for phone account updates.
+03-14 08:44:04.657   797   797 I droid.tethering: type=1400 audit(0.0:3479): avc: denied { call } for scontext=u:r:network_stack:s0:c49,c260,c512,c768 tcontext=u:r:imyun-init:s0 tclass=binder permissive=1
+03-14 08:44:04.673   888   888 D OtaspSimStateReceiver: Received intent: android.telephony.action.CARRIER_CONFIG_CHANGED
+03-14 08:44:04.673   888   888 D MultiSimSettingController: onCarrierConfigChanged phoneId 0 subId -1
+03-14 08:44:04.674   888   888 D MultiSimSettingController: updateDefaults
+03-14 08:44:04.674   888   888 D MultiSimSettingController: [updateDefaultValues] No active sub. Setting default to INVALID sub.
+03-14 08:44:04.683   671   671 V KeyguardUpdateMonitor: onSubscriptionInfoChanged()
+03-14 08:44:04.699   491   491 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@d584311
+03-14 08:44:04.711   491   501 I system_server: Background young concurrent copying GC freed 190920(10MB) AllocSpace objects, 38(1676KB) LOS objects, 45% free, 14MB/26MB, paused 241us total 129.044ms
+03-14 08:44:04.718   888   888 I VvmSimStateTracker: android.telephony.action.CARRIER_CONFIG_CHANGED
+03-14 08:44:04.718   888   888 I VvmSimStateTracker: Received SIM change for invalid subscription id.
+03-14 08:44:04.718   888   888 D MultiSimSettingController: onDefaultDataSettingChanged
+03-14 08:44:04.784   671   671 W KeyguardUpdateMonitor: invalid subId in handleServiceStateChange()
+03-14 08:44:04.785   888   888 W PhoneGlobals: Can't get phone with sub id = -1
+03-14 08:44:04.792  1743  1802 D MService: Checker====Running...(0天 1小时 1分钟 48秒)
+03-14 08:44:05.070  1359  1877 I HeadwindMDM: Logs are uploaded
+03-14 08:44:05.088  1359  1877 I HeadwindMDM: Remote logger: unsent items: 0
+03-14 08:44:05.090  1359  1517 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=4a82bcaf-f556-4de5-8b79-4ad7e6e0a0f1, tags={ com.hmdm.launcher, com.hmdm.launcher.worker.RemoteLogWorker } ]
+03-14 08:44:05.281   491   511 W WindowManager: Unable to start animation, surface is null or no children.
+03-14 08:44:05.791   190  1001 E BufferQueueProducer: [Toast#0](id:be000009f2,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:44:05.792   671  1110 W libEGL  : EGLNativeWindowType 0xb400007684855ff0 disconnect failed
+03-14 08:44:05.804   491  8992 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@832870a
+03-14 08:44:05.838   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 512, alloc_width : 119, alloc_height : 49
+03-14 08:44:05.838   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:05.841   223   223 D gralloc4: plane_info[0]: offset : 0, byte_stride : 256, alloc_width : 49, alloc_height : 119
+03-14 08:44:05.841   223   223 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:05.841   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 512, alloc_width : 119, alloc_height : 49
+03-14 08:44:05.841   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:05.842   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 512, alloc_width : 119, alloc_height : 49
+03-14 08:44:05.842   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:06.270   491   579 E WifiVendorHal: getWifiLinkLayerStats_1_3_Internal(l.973) failed {.code = ERROR_UNKNOWN, .description = unknown error}
+03-14 08:44:06.711   491   491 W WindowManager: removeWindowToken: Attempted to remove non-existing token: android.os.Binder@6f90ee4
+03-14 08:44:07.289   491   511 W WindowManager: Unable to start animation, surface is null or no children.
+03-14 08:44:07.792  1743  1802 D MService: Checker====Running...(0天 1小时 1分钟 51秒)
+03-14 08:44:07.818   190   202 E BufferQueueProducer: [Toast#1](id:be000009f3,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:44:07.818   671  1110 W libEGL  : EGLNativeWindowType 0xb400007684855ff0 disconnect failed
+03-14 08:44:07.826   491  8992 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@902c6ba
+03-14 08:44:07.866   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 512, alloc_width : 119, alloc_height : 49
+03-14 08:44:07.866   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:07.867   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 512, alloc_width : 119, alloc_height : 49
+03-14 08:44:07.867   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:07.867   223   223 D gralloc4: plane_info[0]: offset : 0, byte_stride : 256, alloc_width : 49, alloc_height : 119
+03-14 08:44:07.867   223   223 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:07.868   223   226 D gralloc4: plane_info[0]: offset : 0, byte_stride : 512, alloc_width : 119, alloc_height : 49
+03-14 08:44:07.868   223   226 D gralloc4: plane_info[1]: offset : 0, byte_stride : 0, alloc_width : 0, alloc_height : 0
+03-14 08:44:03.791     0     0 I chatty  : uid=0(root) logd identical 5 lines
+03-14 08:44:03.822     0     0 D logd    : Skipping 256 entries from slow reader, pid 7570, from LogBuffer::kickMe()
+03-14 08:44:07.957     0     0 E sdio_err: <aicwf_sdio_hal_irqhandler,1637>: Interrupt but no data

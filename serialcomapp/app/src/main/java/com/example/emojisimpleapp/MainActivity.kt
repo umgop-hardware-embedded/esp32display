@@ -8,6 +8,7 @@ import android.content.IntentFilter
 import android.hardware.usb.UsbManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -25,6 +26,7 @@ import com.hoho.android.usbserial.driver.UsbSerialProber
 
 class MainActivity : AppCompatActivity() {
 
+    private val TAG = "DualESP32"
     private val ACTION_USB_PERMISSION = "com.example.emojisimpleapp.USB_PERMISSION"
     private lateinit var usbManager: UsbManager
     private var port1: UsbSerialPort? = null
@@ -42,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                         permissionRequested = false
                         val granted = intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)
                         if (granted) {
-                            toast("Permission granted!")
+                            Log.d(TAG, "Permission granted")
                             statusText.postDelayed({ requestPermissionsAndConnect() }, 300)
                         } else {
                             toast("Permission denied. Tap Reconnect.")
@@ -51,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             } catch (e: Exception) {
-                toast("Permission error: ${e.message}")
+                Log.e(TAG, "Permission error: ${e.message}")
                 permissionRequested = false
             }
         }
@@ -95,14 +97,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Request permissions for all USB devices (except hubs/HID), then connect.
+     * Request permissions for all USB devices (except hubs), then connect.
+     * NOTE: deviceClass=0 is common for composite devices including ESP32 — do NOT filter it.
      */
     private fun requestPermissionsAndConnect() {
         if (permissionRequested) return
 
-        // Skip hubs (9), HID (3), mass storage (8), misc (0)
-        val skipClasses = setOf(0, 3, 8, 9)
-        val usbDevices = usbManager.deviceList.values.filter { it.deviceClass !in skipClasses }
+        // Log every USB device on the bus for debugging
+        for (dev in usbManager.deviceList.values) {
+            Log.d(TAG, "USB bus: id=${dev.deviceId} VID=0x${dev.vendorId.toString(16)} " +
+                "PID=0x${dev.productId.toString(16)} class=${dev.deviceClass} " +
+                "name=${dev.productName ?: "?"} perm=${usbManager.hasPermission(dev)}")
+        }
+
+        // Only skip USB hubs (class 9). Class 0 = composite devices (ESP32 uses this!)
+        val usbDevices = usbManager.deviceList.values.filter { it.deviceClass != 9 }
 
         if (usbDevices.isEmpty()) {
             toast("No USB devices found")
@@ -113,6 +122,7 @@ class MainActivity : AppCompatActivity() {
         for (device in usbDevices) {
             if (!usbManager.hasPermission(device)) {
                 permissionRequested = true
+                Log.d(TAG, "Requesting permission for VID=0x${device.vendorId.toString(16)}")
                 val intent = Intent(ACTION_USB_PERMISSION).apply { setPackage(packageName) }
                 val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
                     PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
@@ -127,16 +137,42 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Open serial ports. For each USB device:
-     * 1) Try default prober first
-     * 2) If not matched, try each driver type with a FRESH connection each time
+     * Open serial ports.
+     * Step 1: Use default prober across ALL permitted devices (safe — just checks VID/PID tables)
+     * Step 2: Brute-force remaining devices, but SKIP audio(1), HID(3), storage(8), hub(9), wireless(0xE0)
+     *         to avoid fighting with kernel drivers (4G modem, audio devices, etc.)
      */
     private fun openSerialPorts() {
-        val skipClasses = setOf(0, 3, 8, 9)
-        val usbDevices = usbManager.deviceList.values.filter {
-            it.deviceClass !in skipClasses && usbManager.hasPermission(it)
+        val openedDeviceIds = mutableSetOf<Int>()
+        var count = 0
+
+        // Step 1: Default prober — catches known VID/PIDs (Espressif, CH340, CP210x, FTDI, etc.)
+        val defaultDrivers = UsbSerialProber.getDefaultProber().findAllDrivers(usbManager)
+        Log.d(TAG, "Default prober found ${defaultDrivers.size} driver(s)")
+        for (driver in defaultDrivers) {
+            if (count >= 2) break
+            if (!usbManager.hasPermission(driver.device)) {
+                Log.w(TAG, "No permission for VID=0x${driver.device.vendorId.toString(16)}"); continue
+            }
+            val conn = usbManager.openDevice(driver.device)
+            if (conn == null) { Log.e(TAG, "openDevice returned null"); continue }
+            try {
+                val sp = driver.ports[0]
+                sp.open(conn)
+                sp.setParameters(115200, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
+                assignPort(count, sp)
+                openedDeviceIds.add(driver.device.deviceId)
+                count++
+                Log.d(TAG, "✓ Default prober opened #$count: VID=0x${driver.device.vendorId.toString(16)} ${driver.javaClass.simpleName}")
+            } catch (e: Exception) {
+                Log.e(TAG, "Default prober open failed: ${e.message}")
+                conn.close()
+            }
         }
 
+        // Step 2: Brute-force remaining devices with a fresh connection per driver attempt.
+        // Skip device classes that are definitely NOT serial ports to avoid kernel driver conflicts.
+        val skipBruteForce = setOf(1, 3, 8, 9, 0xE0) // audio, HID, mass-storage, hub, wireless
         val driverTypes = listOf(
             CdcAcmSerialDriver::class.java,
             Ch34xSerialDriver::class.java,
@@ -144,34 +180,19 @@ class MainActivity : AppCompatActivity() {
             FtdiSerialDriver::class.java
         )
 
-        var count = 0
-
-        for (device in usbDevices) {
+        for (device in usbManager.deviceList.values) {
             if (count >= 2) break
-
-            // 1) Try default prober
-            val defaultDriver = UsbSerialProber.getDefaultProber()
-                .findAllDrivers(usbManager)
-                .firstOrNull { it.device.deviceId == device.deviceId }
-
-            if (defaultDriver != null) {
-                val conn = usbManager.openDevice(device) ?: continue
-                try {
-                    val sp = defaultDriver.ports[0]
-                    sp.open(conn)
-                    sp.setParameters(115200, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
-                    assignPort(count, sp)
-                    count++
-                    continue
-                } catch (_: Exception) {
-                    conn.close()
-                }
+            if (device.deviceId in openedDeviceIds) continue
+            if (!usbManager.hasPermission(device)) continue
+            if (device.deviceClass in skipBruteForce) {
+                Log.d(TAG, "Skipping brute-force for class=${device.deviceClass} VID=0x${device.vendorId.toString(16)}")
+                continue
             }
 
-            // 2) Brute-force: try each driver with a NEW connection each time
+            Log.d(TAG, "Brute-force trying: id=${device.deviceId} VID=0x${device.vendorId.toString(16)} PID=0x${device.productId.toString(16)} class=${device.deviceClass}")
+
             for (dt in driverTypes) {
                 if (count >= 2) break
-                // Fresh connection for each attempt
                 val conn = usbManager.openDevice(device) ?: break
                 try {
                     val table = ProbeTable()
@@ -183,15 +204,18 @@ class MainActivity : AppCompatActivity() {
                     sp.open(conn)
                     sp.setParameters(115200, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE)
                     assignPort(count, sp)
+                    openedDeviceIds.add(device.deviceId)
                     count++
-                    break // success, move to next device
-                } catch (_: Exception) {
+                    Log.d(TAG, "✓ Brute-force opened #$count with ${dt.simpleName}")
+                    break
+                } catch (e: Exception) {
+                    Log.w(TAG, "Brute-force ${dt.simpleName} failed: ${e.message}")
                     conn.close()
-                    // try next driver type
                 }
             }
         }
 
+        Log.d(TAG, "Total: $count ESP32(s) connected")
         toast("$count ESP32(s) connected")
         updateStatus()
     }

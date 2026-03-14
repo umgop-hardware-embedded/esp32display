@@ -1,30 +1,24 @@
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/UsbDeviceConnectionJNI( 4654): device is closed in native_claim_interface
-E/UsbDeviceConnectionJNI( 4654): device is closed in native_control_request
-E/UsbDeviceConnectionJNI( 4654): device is closed in native_release_interface
-E/UsbDeviceConnectionJNI( 4654): device is closed in native_claim_interface
-E/UsbDeviceConnectionJNI( 4654): device is closed in native_release_interface
-E/UsbDeviceConnectionJNI( 4654): device is closed in native_claim_interface
-E/UsbDeviceConnectionJNI( 4654): device is closed in native_release_interface
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/BufferQueueProducer(  190): [com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity#0](id:be00000917,api:0,p:-1,c:190) disconnect: not connected (req=1)
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/NotificationService(  491): Package has already posted 50 toasts. Not showing more. Package=com.example.emojisimpleapp
-E/BufferQueueProducer(  190): [com.example.emojisimpleapp/com.example.emojisimpleapp.MainActivity#0](id:be00000927,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:21.469   190   486 E BufferQueueProducer: [Toast#0](id:be000009d9,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:21.482   491   641 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@a43ffd1
+03-14 08:43:23.484   190   486 E BufferQueueProducer: [Toast#1](id:be000009da,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:23.491   491   641 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@1f37f41
+03-14 08:43:25.502   190  1001 E BufferQueueProducer: [Toast#0](id:be000009db,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:25.512   491  3827 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@11c9b96
+03-14 08:43:27.522   190  1001 E BufferQueueProducer: [Toast#1](id:be000009dc,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:27.537   491  3827 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@d740007
+03-14 08:43:29.541   190   486 E BufferQueueProducer: [Toast#0](id:be000009dd,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:29.550   491  8995 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@acd7364
+03-14 08:43:31.549   190   202 E BufferQueueProducer: [Toast#1](id:be000009de,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:31.556   491   641 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@d267d94
+03-14 08:43:33.561   190  1001 E BufferQueueProducer: [Toast#0](id:be000009df,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:33.569   491   641 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@aae73c4
+03-14 08:43:35.580   190   201 E BufferQueueProducer: [Toast#1](id:be000009e0,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:35.591   491  8995 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@490a2de
+03-14 08:43:37.599   190   201 E BufferQueueProducer: [Toast#0](id:be000009e1,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:37.620   491  3827 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@88cc3af
+03-14 08:43:39.617   190  1001 E BufferQueueProducer: [Toast#1](id:be000009e2,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:39.634   491   641 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@baae83e
+03-14 08:43:41.635   190   486 E BufferQueueProducer: [Toast#0](id:be000009e3,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:41.648   491  3827 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@37fdcee
+03-14 08:43:43.658   190  1001 E BufferQueueProducer: [Toast#1](id:be000009e4,api:0,p:-1,c:190) disconnect: not connected (req=1)
+03-14 08:43:43.670   491  3827 W NotificationService: Toast already killed. pkg=com.example.emojisimpleapp token=android.os.BinderProxy@f79307f
